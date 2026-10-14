@@ -226,7 +226,9 @@ function page({ file, title, description: rawDescription, main, activeKey = '', 
 ${site.proposta ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow">'}
 <meta name="theme-color" content="#286b82">
 ${site.proposta ? '' : `<link rel="canonical" href="${url}">`}
+<link rel="icon" type="image/svg+xml" href="${root}assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="${root}assets/img/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="${root}assets/img/favicon.ico" sizes="16x16">
 <link rel="apple-touch-icon" href="${root}assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
