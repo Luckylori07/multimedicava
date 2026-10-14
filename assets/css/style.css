@@ -98,14 +98,17 @@ main:focus { outline: none; }
 .call-bar:hover { color: #fff; background: var(--cross-dark); }
 body { padding-bottom: 60px; }
 
-/* ---------- Hero: il telefono è il titolo ---------- */
-.hero { padding-block: 40px 56px; }
-.hero-grid { display: grid; gap: 36px; align-items: center; }
+/* ---------- Hero: fascia a tinta piena, titolo grande, telefono in evidenza ---------- */
+.hero { padding-block: 40px 56px; background: var(--petrol); color: #fff; }
+.hero-grid { display: grid; gap: 28px; align-items: center; }
+.hero h1 { grid-column: 1 / -1; margin: 0; color: #fff; font-size: clamp(3rem, 11vw, 5.75rem); line-height: 1; letter-spacing: -.025em; }
 .lead { font-size: var(--t1); line-height: 1.5; color: var(--muted); max-width: 30em; }
-.phone { display: inline-block; margin: 8px 0 6px; font-size: clamp(2.75rem, 11vw, 4.5rem); font-weight: 700; line-height: 1.05; letter-spacing: -.02em; color: var(--ink); text-decoration: underline; text-decoration-color: var(--cross); text-decoration-thickness: .1em; text-underline-offset: .12em; white-space: nowrap; }
-.phone:hover { color: var(--cross-dark); }
-.hours-line { font-size: var(--t1); line-height: 1.4; margin: 0 0 20px; }
-.hero-alt { margin: 0; }
+.hero .lead { color: #fff; margin: 0 0 22px; }
+.phone { display: inline-flex; align-items: center; gap: 14px; padding: 8px 20px; border: 3px solid #fff; border-radius: var(--r-action); background: var(--cross); color: #fff; font-size: clamp(1.9rem, 8vw, 2.75rem); font-weight: 700; line-height: 1.1; letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.phone:hover { background: var(--cross-dark); color: #fff; }
+.phone svg { flex: none; }
+.hours-line { font-size: var(--t1); line-height: 1.4; margin: 20px 0 0; color: #fff; }
+.hero :focus-visible { outline-color: #fff; box-shadow: 0 0 0 6px var(--ink); }
 .photo { margin: 0; border-radius: var(--r-image); overflow: hidden; background: var(--glass); }
 .stack { display: grid; gap: 16px; }
 .photo img { width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
@@ -262,8 +265,8 @@ aside .btn-row { margin-bottom: 24px; }
   .dir > li { grid-template-columns: 1fr 1.4fr; gap: 32px; }
 }
 @media (min-width: 900px) {
-  .hero { padding-block: 64px 80px; }
-  .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 56px; }
+  .hero { padding-block: 56px 72px; }
+  .hero-grid { grid-template-columns: 1.1fr 1fr; gap: 40px 56px; }
   .split { grid-template-columns: 1fr 1fr; gap: 64px; }
   .index.cols { column-count: 3; }
   .conv-strip { grid-template-columns: repeat(4, 1fr); }

@@ -323,12 +323,11 @@ function homePage() {
     main: (root) => `<main id="contenuto" tabindex="-1">
   <section class="hero" aria-labelledby="titolo-pagina">
     <div class="wrap hero-grid">
-      <div>
-        <h1 id="titolo-pagina">Multi Medica Varese</h1>
-        <p class="lead">Poliambulatorio specialistico nel centro di Varese, in Via Piave 9. Società a responsabilità limitata dal 1993.</p>
-        <a class="phone" href="${telHref}"><span class="visually-hidden">Chiama </span>${tel}</a>
-        <p class="hours-line"><strong>${esc(site.orari.titolo)}</strong>, ${esc(site.orari.giorni)}, ${esc(site.orari.fascia)}.</p>
-        <p class="hero-alt">Oppure scriva a <a href="mailto:${site.email}">${site.email}</a></p>
+      <h1 id="titolo-pagina">Multi Medica Varese</h1>
+      <div class="hero-info">
+        <p class="lead">Poliambulatorio specialistico nel centro di Varese, in Via Piave 9.</p>
+        <a class="phone" href="${telHref}">${icon('phone', 34)}<span class="visually-hidden">Chiama </span>${tel}</a>
+        <p class="hours-line"><strong>${esc(site.orari.titolo)}</strong><br>${esc(site.orari.giorni)}, ${esc(site.orari.fascia)}</p>
       </div>
       ${photo('reception', root, { eager: true })}
     </div>
