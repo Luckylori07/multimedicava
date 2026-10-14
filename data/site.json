@@ -1,0 +1,71 @@
+{
+  "nome": "Multi Medica Varese",
+  "ragioneSociale": "Multi Medica Varese Srl",
+  "tipo": "Poliambulatorio specialistico",
+  "proposta": true,
+  "baseUrl": "https://www.multimedicava.com",
+  "indirizzo": {
+    "via": "Via Piave, 9",
+    "cap": "21100",
+    "citta": "Varese",
+    "provincia": "VA",
+    "paese": "IT"
+  },
+  "telefono": "0332 287257",
+  "telefonoHref": "+390332287257",
+  "fax": "0332 287257",
+  "email": "info@multimedicava.com",
+  "pec": "multimedica@pec.it",
+  "emailMedici": "dottori@multimedicava.com",
+  "direttoreSanitario": "Dr. Graziano Azzimonti",
+  "piva": "02127670129",
+  "tribunale": "Tribunale di Varese n. 20120/93",
+  "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Multi+Medica+Varese+Via+Piave+9+21100+Varese",
+  "mapsRouteUrl": "https://www.google.com/maps/dir/?api=1&destination=Multi+Medica+Varese+Via+Piave+9+21100+Varese",
+  "orari": {
+    "titolo": "Riceviamo solo su appuntamento",
+    "giorni": "dal lunedì al venerdì",
+    "fascia": "dalle 8.30 alle 19.00",
+    "apertura": "08:30",
+    "chiusura": "19:00",
+    "fonte": "Trascritto dall'immagine numero_orari.gif del sito originale"
+  },
+  "chiSiamo": [
+    "Multi Medica Varese ha assunto l'attuale configurazione di Società a Responsabilità Limitata nel 1993, sulla base di una sempre crescente domanda di Servizi Medico-Specialistici che, in combinazione ad una elevata professionalità e ad apparecchiature medicali ad alta tecnologia, rispondessero a criteri di reale «Servizio» quali: la facilità di contatto, la tempestività, l'integrazione tra discipline diverse.",
+    "Multi Medica Varese offre i propri Servizi in una zona logisticamente ideale nel centro di Varese; facilmente raggiungibile dai residenti, è comunque situata in prossimità delle Stazioni ferroviarie (FF.SS./FNM), che offrono ampi posteggi per le autovetture, delle fermate delle Autolinee urbane ed extraurbane, nonché dell'uscita dell'autostrada Varese-Milano."
+  ],
+  "valori": [
+    "Facilità di contatto",
+    "Tempestività",
+    "Integrazione tra discipline diverse"
+  ],
+  "raggiungerci": {
+    "intro": "Multi Medica Varese si trova in una zona logisticamente ideale nel centro di Varese, facilmente raggiungibile dai residenti. È comunque situata in prossimità di:",
+    "punti": [
+      "le Stazioni ferroviarie (FF.SS./FNM), che offrono ampi posteggi per le autovetture;",
+      "le fermate delle Autolinee urbane ed extraurbane;",
+      "l'uscita dell'autostrada Varese-Milano."
+    ]
+  },
+  "ozono": {
+    "titolo": "Ozonoterapia",
+    "titoloOriginale": "Ozono Terapia",
+    "pubblicato": "01/06/2023",
+    "pubblicatoEsteso": "1 giugno 2023",
+    "paragrafi": [
+      "L'ozono terapia trova molte applicazioni perché caratterizzata da un'azione antidolorifica, antibatterica, antinfiammatoria e rivitalizzante dei tessuti",
+      "L'ozono, quando utilizzato a scopo medico-terapeutico, viene impiegato in concentrazioni molto basse in una miscela costituita prevalentemente di ossigeno, in questo modo si riesce a gestire il suo elevato potere ossidante",
+      "Moltissime sono le proprietà di questo gas, con altrettanti effetti benefici sul nostro organismo:"
+    ],
+    "elenco": [
+      "svolge innanzitutto un'azione antinfiammatoria",
+      "favorisce il rilascio di endorfine, bloccando la trasmissione dello stimolo doloroso",
+      "favorisce il rilassamento muscolare, la vasodilatazione e la riattivazione del metabolismo muscolare",
+      "favorisce il legame tra ossigeno respirato e globuli rossi; con effetto rivitalizzante sui tessuti",
+      "ha un effetto antiaging in quanto favorisce l'attivazione dei meccanismi antiossidanti interni",
+      "ha un effetto lipolitico, riduce la cellulite migliorando gli inestetismi cutanei"
+    ],
+    "nota": "Testo fedele all'originale (it/include/news_dett.php?id=7). Corretti solo i difetti di codifica (&#39;/&nbsp; visibili, 'attiivazione') e due spazi di punteggiatura. DA VALIDARE CON IL DIRETTORE SANITARIO."
+  },
+  "tramontis": "https://tramontis.netlify.app/"
+}

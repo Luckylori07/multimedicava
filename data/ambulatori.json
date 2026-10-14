@@ -1,0 +1,848 @@
+[
+  {
+    "id": 17,
+    "slug": "andrologia",
+    "nome": "Andrologia",
+    "descrizione": "L'andrologia è la branca che si occupa delle disfunzioni dell'apparato riproduttore e urogenitale maschile.",
+    "prestazioni": [
+      "Visita specialistica",
+      "Ecografia prostatica transrettale",
+      "Ecografia scrotale",
+      "EcoColorDoppler penieno attivato",
+      "Diagnosi e cura dell'impotenza",
+      "Interventi di Frenulectomia"
+    ],
+    "medici": [
+      {
+        "id": "22",
+        "titolo": "Dott.",
+        "nome": "Francesco Marone",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Specialista in Andrologia"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Ecografia dei Reni e delle Vie Urinarie",
+          "Ecografia prostatica transrettale",
+          "Biopsia prostatica"
+        ]
+      }
+    ],
+    "diagnostiche": [
+      "color-doppler"
+    ],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=17"
+  },
+  {
+    "id": 20,
+    "slug": "angiologia",
+    "nome": "Angiologia",
+    "descrizione": "È la branca che studia l'anatomia e le patologie che colpiscono i vasi sanguigni e quelli linfatici.",
+    "prestazioni": [
+      "Visita specialistica",
+      "EcoColorDoppler Arterioso",
+      "EcoColorDoppler Venoso",
+      "Scleroterapia"
+    ],
+    "medici": [
+      {
+        "id": "65",
+        "titolo": "Dott.",
+        "nome": "Antonino Tarallo",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [
+      "color-doppler"
+    ],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=20"
+  },
+  {
+    "id": 7,
+    "slug": "cardiologia",
+    "nome": "Cardiologia",
+    "descrizione": "La cardiologia è la branca che si occupa dello studio, della diagnosi e della cura delle malattie cardiovascolari.",
+    "prestazioni": [
+      "Visita specialistica",
+      "Elettrocardiogramma di base",
+      "Elettrocardiogramma secondo Holter",
+      "EcoCardioColorDoppler",
+      "Monitoraggio della pressione arteriosa nelle 24 ore"
+    ],
+    "medici": [
+      {
+        "id": "16",
+        "titolo": "Dott.",
+        "nome": "Gianmarco Dacquino",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "48",
+        "titolo": "Dott.ssa",
+        "nome": "Mariangela Lattanzio",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Ospedale di Circolo e Fondazione Macchi Varese"
+        ],
+        "prestazioni": [
+          "Visita specialistica cardiologica",
+          "Elettrocardiogramma",
+          "Ecocardiogramma",
+          "Monitoraggio della Pressione Arteriosa nelle 24 ore"
+        ]
+      },
+      {
+        "id": "8",
+        "titolo": "Dott.",
+        "nome": "Fabrizio Morandi",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Specialista in Medicina Nucleare",
+          "Ospedale di Circolo e Fond. Macchi Varese"
+        ],
+        "prestazioni": [
+          "Visita specialistica cardiologica",
+          "Elettrocardiogramma",
+          "Ecocardiogramma",
+          "Monitoraggio della Pressione Arteriosa nelle 24 ore"
+        ]
+      },
+      {
+        "id": "36",
+        "titolo": "Dott.",
+        "nome": "Stefano Provasoli",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Ospedale di Circolo e Fond. Macchi Varese"
+        ],
+        "prestazioni": [
+          "Visita specialistica cardiologica",
+          "Elettrocardiogramma",
+          "Ecocardiogramma",
+          "Monitoraggio della Pressione Arteriosa nelle 24 ore"
+        ]
+      }
+    ],
+    "diagnostiche": [
+      "cardiologia"
+    ],
+    "foto": "cardio",
+    "fonte": "it/ambulatori.php?idcat=7"
+  },
+  {
+    "id": 19,
+    "slug": "chirurgia",
+    "nome": "Chirurgia",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica",
+      "Piccoli interventi ambulatoriali (asportazione nei, lipomi, cisti, unghie incarnite etc)",
+      "Proctologia: Legatura delle emorroidi"
+    ],
+    "medici": [
+      {
+        "id": "24",
+        "titolo": "Dott.ssa",
+        "nome": "Anna Cremona",
+        "qualifiche": [
+          "Specialista in Chirurgia Generale",
+          "Ospedale di Circolo - VARESE"
+        ],
+        "prestazioni": [
+          "Piccoli interventi di chirurgia ambulatoriale",
+          "Rimozione di Cisti, Nevi, Lipomi, unghie incarnite",
+          "Trattamento delle emorroidi"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=19"
+  },
+  {
+    "id": 6,
+    "slug": "dermatologia",
+    "nome": "Dermatologia",
+    "descrizione": "La dermatologia è la branca della medicina che si occupa della diagnosi e trattamento di malattie e tumori della pelle e dei suoi annessi (peli e capelli, unghie, ghiandole sudorifere ecc.)",
+    "prestazioni": [
+      "Visita specialistica",
+      "Mappatura dei nei",
+      "Rimozione verruche, porri, fibromi molli",
+      "Crioterapia"
+    ],
+    "medici": [
+      {
+        "id": "7",
+        "titolo": "Dott.ssa",
+        "nome": "Sandra Leuchi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Dermatologia e Venereologia"
+        ],
+        "prestazioni": [
+          "Visita Specialistica",
+          "Rimozione verruche",
+          "Mappatura Nevi"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": "dermatologo",
+    "fonte": "it/ambulatori.php?idcat=6"
+  },
+  {
+    "id": 1,
+    "slug": "diagnostica-per-immagini-ecografia",
+    "nome": "Diagnostica per immagini - Ecografia",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "1",
+        "titolo": "Dott.",
+        "nome": "Massimo Paolucci",
+        "qualifiche": [
+          "Specialista in Radiologia"
+        ],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [
+      "ecografia",
+      "color-doppler"
+    ],
+    "foto": "studio-ecografia",
+    "fonte": "it/ambulatori.php?idcat=1",
+    "prestazioni_gruppi": [
+      [
+        "Ecografia Addome Completo",
+        "Ecografia Addome superiore",
+        "Ecografia Addome inferiore",
+        "Ecografia Pelvi",
+        "Ecografia Prostata",
+        "Ecografia di Organi singoli",
+        "Ecografia delle Parti Molli",
+        "Ecografia Prostatica Transrettale",
+        "Ecografia dei Reni e delle vie urinarie",
+        "Ecografia Transfontanellare Encefalica",
+        "Ecografia Transvaginale",
+        "Ecografia delle Anche",
+        "Ecografia della Traslucenza Nucale (N.T.)",
+        "Ecografia ostetrica",
+        "Ecografia ostetrica morfologica"
+      ],
+      [
+        "EcoColorDoppler Arti Venoso",
+        "EcoColorDoppler Arti Arterioso",
+        "EcoColorDoppler Viscerale",
+        "EcoColorDoppler dei Tronchi Sovra Aortici (T.S.A)",
+        "EcoColorDoppler Testicolare",
+        "EcoColorDoppler Penieno attivato"
+      ],
+      [
+        "EcoCardioColorDoppler (Ecocardiogramma o Ecocardiografia)"
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "slug": "ematologia",
+    "nome": "Ematologia",
+    "descrizione": "L'ematologia è la specialità dell'ambito internistico che svolge un ruolo di diagnosi e cura delle malattie che interessano sia la composizione del sangue sia gli organi che lo producono",
+    "prestazioni": [
+      "Visita specialistica"
+    ],
+    "medici": [
+      {
+        "id": "56",
+        "titolo": "Dott.",
+        "nome": "Nazario Brumana",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ],
+        "prestazioni": [
+          "Visita specialistica Ematologica"
+        ]
+      },
+      {
+        "id": "13",
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "EcoColorDoppler Tronchi Sovra Aortici (T.S.A.)"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=11"
+  },
+  {
+    "id": 13,
+    "slug": "endocrinologia",
+    "nome": "Endocrinologia",
+    "descrizione": "L'endocrinologia è la specialità che studia le ghiandole a secrezione interna, ossia quelle il cui prodotto viene direttamente immesso nel sangue (ormoni).",
+    "prestazioni": [
+      "Visita specialistica",
+      "Ecografia tiroidea",
+      "Agoaspirato tiroide"
+    ],
+    "medici": [
+      {
+        "id": "18",
+        "titolo": "Dott.",
+        "nome": "Fabrizio Golonia",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Endocrinologia",
+          "Ospedale di Circolo Varese"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Ecografia Tiroide",
+          "Diete personalizzate"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=13"
+  },
+  {
+    "id": 24,
+    "slug": "fisiatria",
+    "nome": "Fisiatria",
+    "descrizione": "È la branca che si occupa della diagnosi, terapia e riabilitazione della disabilità conseguente a varie malattie che comportano una riduzione dell'attività motoria, cognitiva o emozionale.",
+    "prestazioni": [
+      "Visita specialistica",
+      "Redazione del piano terapeutico"
+    ],
+    "medici": [
+      {
+        "id": "35",
+        "titolo": "Dott.",
+        "nome": "Antonio Ferrario",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=24"
+  },
+  {
+    "id": 8,
+    "slug": "gastroenterologia",
+    "nome": "Gastroenterologia",
+    "descrizione": "La gastroenterologia si occupa dello studio e cura delle malattie del tratto gastrointestinale.",
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "54",
+        "titolo": "Dott.",
+        "nome": "Claudio Camillo Cortelezzi",
+        "qualifiche": [
+          "Specialista in Gastroenterologia",
+          "Specialista in Medicina Interna",
+          "Ospedale di Circolo Varese"
+        ],
+        "prestazioni": [
+          "Visita specialistica Gastroenterologica",
+          "Visita proctologica",
+          "Legature emorroidi"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=8"
+  },
+  {
+    "id": 2,
+    "slug": "ginecologia-ostetricia",
+    "nome": "Ginecologia - Ostetricia",
+    "descrizione": "La ginecologia è la branca che si occupa delle patologie inerenti l'apparato genitale femminile. L'ostetricia è la branca che si occupa dell'assistenza alla donna durante la gravidanza, il parto ed il puerperio.",
+    "prestazioni": [
+      "Visita specialistica",
+      "Ecografia pelvica sovrapubica",
+      "Ecografia pelvica transvaginale",
+      "Ecografia morfologica",
+      "Ecografia della traslucenza nucale",
+      "Pap-test",
+      "Tampone vaginale",
+      "Tampone vagino-rettale",
+      "Bi-test (Ultratest)"
+    ],
+    "medici": [
+      {
+        "id": "2",
+        "titolo": "Dott.",
+        "nome": "Marco Rossinotti",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ostetricia e Ginecologia",
+          "Ospedale di Cittiglio"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Ecografia ginecologica",
+          "Ecografia ostetrica",
+          "Ecografia morfologica",
+          "Ecografia della Traslucenza Nucale",
+          "Chirurgia endoscopica",
+          "Chirurgia vaginale"
+        ]
+      },
+      {
+        "id": "32",
+        "titolo": "Dott.ssa",
+        "nome": "Elena Zarini",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [
+      "ginecologia",
+      "ostetricia"
+    ],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=2"
+  },
+  {
+    "id": 21,
+    "slug": "medicina-interna",
+    "nome": "Medicina interna",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "57",
+        "titolo": "Dott.",
+        "nome": "Nazario Brumana",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Medicina Interna",
+          "Specialista in Ematologia"
+        ],
+        "prestazioni": [
+          "Visita specialistica di Medicina Interna"
+        ]
+      },
+      {
+        "id": "51",
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=21"
+  },
+  {
+    "id": 3,
+    "slug": "medicina-legale-e-delle-assicurazioni",
+    "nome": "Medicina legale e delle assicurazioni",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "3",
+        "titolo": "Dott.",
+        "nome": "Graziano Azzimonti",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=3"
+  },
+  {
+    "id": 28,
+    "slug": "neurochirurgia",
+    "nome": "Neurochirurgia",
+    "descrizione": "La neurochirurgia, è una branca della chirurgia che si occupa specialmente di problemi legati a malattie del cervello, del midollo spinale e dei nervi in generale.",
+    "prestazioni": [
+      "Visita specialistica"
+    ],
+    "medici": [
+      {
+        "id": "44",
+        "titolo": "Prof.",
+        "nome": "Carlo Scamoni",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=28"
+  },
+  {
+    "id": 14,
+    "slug": "neurologia",
+    "nome": "Neurologia",
+    "descrizione": "La neurologia è la branca che studia le patologie inerenti il SNC/Sistema Nervoso Centrale (cervello, cervelletto, tronco encefalico e midollo spinale); il Sistema Periferico Somatico (radici e gangli spinali, plessi e tronchi nervosi) ed il SNA/Sistema Nervoso Periferico Autonomo (gangli simpatici e parasimpatici, plessi extraviscerali ed intraviscerali).",
+    "prestazioni": [
+      "Visita specialistica"
+    ],
+    "medici": [
+      {
+        "id": "19",
+        "titolo": "Dott.",
+        "nome": "Umberto Surace",
+        "qualifiche": [],
+        "prestazioni": [
+          "Visita specialistica"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=14"
+  },
+  {
+    "id": 5,
+    "slug": "oculistica",
+    "nome": "Oculistica",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica",
+      "Tonometria",
+      "Fondo oculare",
+      "Prescrizione lenti"
+    ],
+    "medici": [
+      {
+        "id": "67",
+        "titolo": "Dott.ssa",
+        "nome": "Alessandra Cantarelli",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "5",
+        "titolo": "Dott.",
+        "nome": "Gerardo Gennari",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "66",
+        "titolo": "Dott.ssa",
+        "nome": "Simona Gori",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": "oculista",
+    "fonte": "it/ambulatori.php?idcat=5"
+  },
+  {
+    "id": 18,
+    "slug": "odontoiatria",
+    "nome": "Odontoiatria",
+    "descrizione": null,
+    "prestazioni": [
+      "Igiene dentale",
+      "Chirurgia odontoiatrica",
+      "Protesi Fissa",
+      "Protesi Mobile",
+      "Implantologia",
+      "Gnatologia",
+      "Cure conservative",
+      "Endodonzia",
+      "Otturazioni",
+      "Sigillature",
+      "Ortodonzia",
+      "Ortopantomografia digitale"
+    ],
+    "medici": [
+      {
+        "id": "55",
+        "titolo": "Dott.",
+        "nome": "Marco Gabriele Longheu",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "52",
+        "titolo": "Dott.",
+        "nome": "Mauro Rivolta",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "31",
+        "titolo": "Dott.",
+        "nome": "Ivano Sbrana",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [
+      "radiologia-odontoiatrica"
+    ],
+    "foto": "studio-odontoiatrico",
+    "fonte": "it/ambulatori.php?idcat=18"
+  },
+  {
+    "id": 32,
+    "slug": "ortodonzia",
+    "nome": "Ortodonzia",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "59",
+        "titolo": "Dott.ssa",
+        "nome": "Claudia Rovetti",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": "studio-odontoiatrico",
+    "fonte": "it/ambulatori.php?idcat=32"
+  },
+  {
+    "id": 12,
+    "slug": "ortopedia",
+    "nome": "Ortopedia",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica"
+    ],
+    "medici": [
+      {
+        "id": "17",
+        "titolo": "Dott.ssa",
+        "nome": "Sara Barbieri",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ortopedia e Traumatologia",
+          "Azienda Ospedaliera S. Antonio Abate - Gallarate"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Infiltrazioni articolari"
+        ]
+      },
+      {
+        "id": "15",
+        "titolo": "Prof.",
+        "nome": "Giovanni Zatti",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ortopedia e Traumatologia",
+          "Direttore Clinica Ortopedica e Scuola di Specializzazione Università degli Studi Milano - Bicocca",
+          "Primario Ortopedia Ospedale San Gerardo Monza"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Infiltrazioni articolari",
+          "Chirurgia Protesica anca e ginocchio anche di revisione, Ortopedia generale e pediatrica, Traumatologia."
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=12"
+  },
+  {
+    "id": 9,
+    "slug": "otorinolaringoiatria",
+    "nome": "Otorinolaringoiatria",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "68",
+        "titolo": "Dott.",
+        "nome": "Gianluca Dalfino",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "58",
+        "titolo": "Dott.",
+        "nome": "Luca Volpi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Otorinolaringoiatria"
+        ],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [
+      "otorinolaringoiatria-audiologia"
+    ],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=9"
+  },
+  {
+    "id": 26,
+    "slug": "pneumologia",
+    "nome": "Pneumologia",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica",
+      "Spirometria"
+    ],
+    "medici": [
+      {
+        "id": "38",
+        "titolo": "Dott.",
+        "nome": "Mauro Bandera",
+        "qualifiche": [],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=26"
+  },
+  {
+    "id": 15,
+    "slug": "psicologia",
+    "nome": "Psicologia",
+    "descrizione": null,
+    "prestazioni": [],
+    "medici": [
+      {
+        "id": "20",
+        "titolo": "Dott.ssa",
+        "nome": "Giuliana Carrino",
+        "qualifiche": [],
+        "prestazioni": []
+      },
+      {
+        "id": "60",
+        "titolo": "Dott.ssa",
+        "nome": "Laura Corpaccini",
+        "qualifiche": [],
+        "prestazioni": [
+          "Consulenza psicologica individuale",
+          "Consulenza psicologica di coppia",
+          "Consulenza sessuale"
+        ]
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=15"
+  },
+  {
+    "id": 10,
+    "slug": "reumatologia",
+    "nome": "Reumatologia",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica"
+    ],
+    "medici": [
+      {
+        "id": "64",
+        "titolo": "Dott.ssa",
+        "nome": "Elena Baratelli",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia"
+        ],
+        "prestazioni": [
+          "Visita specialistica reumatologica"
+        ]
+      },
+      {
+        "id": "12",
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ],
+        "prestazioni": []
+      }
+    ],
+    "diagnostiche": [],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=10"
+  },
+  {
+    "id": 16,
+    "slug": "urologia",
+    "nome": "Urologia",
+    "descrizione": null,
+    "prestazioni": [
+      "Visita specialistica",
+      "Ecografia dei reni e delle vie urinarie",
+      "Ecografia prostatica transrettale",
+      "Ecografia testicolare",
+      "Applicazione/Sostituzione catetere"
+    ],
+    "medici": [
+      {
+        "id": "21",
+        "titolo": "Dott.",
+        "nome": "Francesco Marone",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Specialista in Andrologia"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Ecografia dei Reni e delle Vie Urinarie",
+          "Ecografia prostatica transrettale",
+          "Biopsia prostatica"
+        ]
+      },
+      {
+        "id": "49",
+        "titolo": "Dott.",
+        "nome": "Giovanni Saredi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Ospedale di Circolo - VARESE"
+        ],
+        "prestazioni": [
+          "Visita specialistica",
+          "Ecografia dei Reni e delle Vie Urinarie",
+          "Ecografia prostatica transrettale",
+          "Biopsia prostatica"
+        ]
+      }
+    ],
+    "diagnostiche": [
+      "urologia"
+    ],
+    "foto": null,
+    "fonte": "it/ambulatori.php?idcat=16"
+  }
+]

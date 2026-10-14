@@ -1,0 +1,421 @@
+[
+  {
+    "ambulatorio": "andrologia",
+    "specialita": "Andrologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Francesco Marone",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Specialista in Andrologia"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "angiologia",
+    "specialita": "Angiologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Antonino Tarallo",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "cardiologia",
+    "specialita": "Cardiologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Gianmarco Dacquino",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Mariangela Lattanzio",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Ospedale di Circolo e Fondazione Macchi Varese"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Fabrizio Morandi",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Specialista in Medicina Nucleare",
+          "Ospedale di Circolo e Fond. Macchi Varese"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Stefano Provasoli",
+        "qualifiche": [
+          "Specialista in Cardiologia",
+          "Ospedale di Circolo e Fond. Macchi Varese"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "chirurgia",
+    "specialita": "Chirurgia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Anna Cremona",
+        "qualifiche": [
+          "Specialista in Chirurgia Generale",
+          "Ospedale di Circolo - VARESE"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "dermatologia",
+    "specialita": "Dermatologia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Sandra Leuchi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Dermatologia e Venereologia"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "diagnostica-per-immagini-ecografia",
+    "specialita": "Diagnostica per immagini - Ecografia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Massimo Paolucci",
+        "qualifiche": [
+          "Specialista in Radiologia"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "ematologia",
+    "specialita": "Ematologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Nazario Brumana",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "endocrinologia",
+    "specialita": "Endocrinologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Fabrizio Golonia",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Endocrinologia",
+          "Ospedale di Circolo Varese"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "fisiatria",
+    "specialita": "Fisiatria",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Antonio Ferrario",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "gastroenterologia",
+    "specialita": "Gastroenterologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Claudio Camillo Cortelezzi",
+        "qualifiche": [
+          "Specialista in Gastroenterologia",
+          "Specialista in Medicina Interna",
+          "Ospedale di Circolo Varese"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "ginecologia-ostetricia",
+    "specialita": "Ginecologia - Ostetricia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Marco Rossinotti",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ostetricia e Ginecologia",
+          "Ospedale di Cittiglio"
+        ]
+      },
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Elena Zarini",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "medicina-interna",
+    "specialita": "Medicina interna",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Nazario Brumana",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Medicina Interna",
+          "Specialista in Ematologia"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "medicina-legale-e-delle-assicurazioni",
+    "specialita": "Medicina legale e delle assicurazioni",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Graziano Azzimonti",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "neurochirurgia",
+    "specialita": "Neurochirurgia",
+    "medici": [
+      {
+        "titolo": "Prof.",
+        "nome": "Carlo Scamoni",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "neurologia",
+    "specialita": "Neurologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Umberto Surace",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "oculistica",
+    "specialita": "Oculistica",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Alessandra Cantarelli",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Gerardo Gennari",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Simona Gori",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "odontoiatria",
+    "specialita": "Odontoiatria",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Marco Gabriele Longheu",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Mauro Rivolta",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Ivano Sbrana",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "ortodonzia",
+    "specialita": "Ortodonzia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Claudia Rovetti",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "ortopedia",
+    "specialita": "Ortopedia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Sara Barbieri",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ortopedia e Traumatologia",
+          "Azienda Ospedaliera S. Antonio Abate - Gallarate"
+        ]
+      },
+      {
+        "titolo": "Prof.",
+        "nome": "Giovanni Zatti",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Ortopedia e Traumatologia",
+          "Direttore Clinica Ortopedica e Scuola di Specializzazione Università degli Studi Milano - Bicocca",
+          "Primario Ortopedia Ospedale San Gerardo Monza"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "otorinolaringoiatria",
+    "specialita": "Otorinolaringoiatria",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Gianluca Dalfino",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Luca Volpi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Otorinolaringoiatria"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "pneumologia",
+    "specialita": "Pneumologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Mauro Bandera",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "psicologia",
+    "specialita": "Psicologia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Giuliana Carrino",
+        "qualifiche": []
+      },
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Laura Corpaccini",
+        "qualifiche": []
+      }
+    ]
+  },
+  {
+    "ambulatorio": "reumatologia",
+    "specialita": "Reumatologia",
+    "medici": [
+      {
+        "titolo": "Dott.ssa",
+        "nome": "Elena Baratelli",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Luigi Steidl",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Reumatologia",
+          "Specialista in Ematologia",
+          "Specialista in Medicina Interna"
+        ]
+      }
+    ]
+  },
+  {
+    "ambulatorio": "urologia",
+    "specialita": "Urologia",
+    "medici": [
+      {
+        "titolo": "Dott.",
+        "nome": "Francesco Marone",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Specialista in Andrologia"
+        ]
+      },
+      {
+        "titolo": "Dott.",
+        "nome": "Giovanni Saredi",
+        "qualifiche": [
+          "Medico chirurgo",
+          "Specialista in Urologia",
+          "Ospedale di Circolo - VARESE"
+        ]
+      }
+    ]
+  }
+]

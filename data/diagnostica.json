@@ -1,0 +1,253 @@
+[
+  {
+    "slug": "cardiologia",
+    "nome": "Cardiologia",
+    "esami": [
+      {
+        "nome": "Ecocardiografia",
+        "descrizione": "Ecografia cardiaca."
+      },
+      {
+        "nome": "Elettrocardiogramma di base (E.C.G.)",
+        "descrizione": null
+      },
+      {
+        "nome": "Elettrocardiogramma secondo Holter (E.C.G. Holter)",
+        "descrizione": "Elettrocardiogramma eseguito per 24 ore al fine di evidenziare occasionali aritmie, non identificabili durante il breve tempo di un elettrocardiogramma standard."
+      },
+      {
+        "nome": "Monitoraggio della pressione nelle 24 ore",
+        "descrizione": "Esame eseguito per 24/48 ore per evidenziare l'ipertensione arteriosa instabile"
+      }
+    ],
+    "ambulatori": [
+      "cardiologia"
+    ],
+    "foto": "cardio",
+    "fonte": "it/diagnostica.php?dcat=CARDIOLOGIA"
+  },
+  {
+    "slug": "color-doppler",
+    "nome": "Color Doppler",
+    "esami": [
+      {
+        "nome": "EcocolorDoppler Arterioso / Venoso",
+        "descrizione": null
+      },
+      {
+        "nome": "EcocolorDoppler Penieno Attivato",
+        "descrizione": null
+      },
+      {
+        "nome": "EcocolorDoppler Tronchi Sovra-Aortici (TSA)",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "andrologia",
+      "angiologia",
+      "diagnostica-per-immagini-ecografia"
+    ],
+    "foto": "eco",
+    "fonte": "it/diagnostica.php?dcat=COLOR DOPPLER"
+  },
+  {
+    "slug": "ecografia",
+    "nome": "Ecografia",
+    "esami": [
+      {
+        "nome": "Ecocardiografia",
+        "descrizione": "Ecografia cardiaca"
+      },
+      {
+        "nome": "Ecografia Addome Completo",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Addome Inferiore",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Addome Superiore",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia delle Anche (neonatale)",
+        "descrizione": "Ecografia eseguita sulle articolazioni delle anche dei neonati alk fine di evidenziare eventuali anomalie. L'ecografia va eseguita entro il terzo mese di vita, periodo entro il quale sono ancora possibili eventuali correzioni senza interventi chirurgici"
+      },
+      {
+        "nome": "Ecografia di Organi singoli",
+        "descrizione": "Fegato e vie biliari - Ghiandole salivari bilaterali - Grossi vasi - Intestinale - Linfonodi mono/bilaterali - Mammaria monolaterale o bilaterale - Mediastinica o emitoracica - Milza - Muscolare, tendinea o articolare - Pancreatica"
+      },
+      {
+        "nome": "Ecografia Ginecologica",
+        "descrizione": "Utero, ovaie e annessi"
+      },
+      {
+        "nome": "Ecografia Ostetrica",
+        "descrizione": "Ecografia per valutare l'accrescimento del feto durante la gestazione."
+      },
+      {
+        "nome": "Ecografia per Traslucenza Nucale",
+        "descrizione": "Esame ecografico sul feto nella 12ma settimana di gestazione per misurare la Plica Nucale. Questo esame correlato a calcoli probabilistici permette un primo screening per la diagnosi prenatale della Sindrome di Down"
+      },
+      {
+        "nome": "Ecografia Prostatica Transrettale",
+        "descrizione": "Esame che permette lo studio della prostatata."
+      },
+      {
+        "nome": "Ecografia Renale e Vie Urinarie",
+        "descrizione": "Esame per valutare la struttura dei reni, delle vie urinarie e della vescica"
+      },
+      {
+        "nome": "Ecografia Transvaginale",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "diagnostica-per-immagini-ecografia"
+    ],
+    "foto": "eco",
+    "fonte": "it/diagnostica.php?dcat=ECOGRAFIA"
+  },
+  {
+    "slug": "esami-di-laboratorio",
+    "nome": "Esami di laboratorio",
+    "esami": [
+      {
+        "nome": "Esami Citologici",
+        "descrizione": null
+      },
+      {
+        "nome": "Esami del Sangue",
+        "descrizione": null
+      },
+      {
+        "nome": "Esami delle Urine",
+        "descrizione": null
+      },
+      {
+        "nome": "Esami Istologici",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [],
+    "foto": "esami",
+    "fonte": "it/diagnostica.php?dcat=ESAMI DI LABORATORIO"
+  },
+  {
+    "slug": "ginecologia",
+    "nome": "Ginecologia",
+    "esami": [
+      {
+        "nome": "Ecografia Transvaginale",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "ginecologia-ostetricia"
+    ],
+    "foto": null,
+    "fonte": "it/diagnostica.php?dcat=GINECOLOGIA"
+  },
+  {
+    "slug": "ostetricia",
+    "nome": "Ostetricia",
+    "esami": [
+      {
+        "nome": "Amniocentesi",
+        "descrizione": null
+      },
+      {
+        "nome": "Bi-Test",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Morfologica",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Ostetrica",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "ginecologia-ostetricia"
+    ],
+    "foto": null,
+    "fonte": "it/diagnostica.php?dcat=OSTETRICIA"
+  },
+  {
+    "slug": "otorinolaringoiatria-audiologia",
+    "nome": "Otorinolaringoiatria / Audiologia",
+    "esami": [
+      {
+        "nome": "Audiometria",
+        "descrizione": null
+      },
+      {
+        "nome": "Impedenzometria",
+        "descrizione": null
+      },
+      {
+        "nome": "Naso-Laringoscopia",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "otorinolaringoiatria"
+    ],
+    "foto": null,
+    "fonte": "it/diagnostica.php?dcat=OTORINOLARINGOIATRIA/AUDIOLOGIA"
+  },
+  {
+    "slug": "radiologia-odontoiatrica",
+    "nome": "Radiologia odontoiatrica",
+    "esami": [
+      {
+        "nome": "Ortopantomografia digitale",
+        "descrizione": "Radiografia dell'intera bocca eseguita con apparecchiatura digitale. L'immagine viene consegnato su CD (compact-disc) o stampato su carta fotografica"
+      },
+      {
+        "nome": "Radiografia endorale digitale",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "odontoiatria"
+    ],
+    "foto": "studio-odontoiatrico",
+    "fonte": "it/diagnostica.php?dcat=RADIOLOGIA ODONTOIATRICA"
+  },
+  {
+    "slug": "urologia",
+    "nome": "Urologia",
+    "esami": [
+      {
+        "nome": "Biopsia prostatica",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia renale e delle vie urinarie",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Testicolare",
+        "descrizione": null
+      },
+      {
+        "nome": "Ecografia Transrettale",
+        "descrizione": null
+      },
+      {
+        "nome": "Uroflussometria",
+        "descrizione": null
+      }
+    ],
+    "ambulatori": [
+      "urologia"
+    ],
+    "foto": null,
+    "fonte": "it/diagnostica.php?dcat=UROLOGIA"
+  }
+]

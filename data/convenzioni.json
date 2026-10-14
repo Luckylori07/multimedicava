@@ -1,0 +1,326 @@
+[
+  {
+    "id": 11,
+    "slug": "cadiprof",
+    "nome": "Cadiprof",
+    "nome_esteso": "Cassa di Assistenza Sanitaria Supplementare per i Dipendenti degli Studi Professionali",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.cadiprof.it",
+    "logo": "immag1015.jpg",
+    "aventi_diritto": [
+      "Dipendenti di studi professionali iscritti alla cassa"
+    ],
+    "modalita": [
+      "telefonare al numero verde 800 016635"
+    ]
+  },
+  {
+    "id": 6,
+    "slug": "cassa-unica",
+    "nome": "Cassa Unica",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale"
+    ],
+    "sito": "http://www.cassaunica.it",
+    "logo": "immag1007.jpg",
+    "aventi_diritto": [
+      "assicurati con Assirete"
+    ],
+    "modalita": [
+      "inviare una e-mail all’ indirizzo informazioniassirecre2013@cassaunica.com ovvero inviare un fax al numero 06.97627004"
+    ]
+  },
+  {
+    "id": 14,
+    "slug": "cral-alenia-aermacchi",
+    "nome": "CRAL Alenia Aermacchi",
+    "nome_esteso": "Circolo ricreativo aziendale lavoratori AleniaAermacchi S.p.a.",
+    "tipo": [
+      "Sconto sulle prestazioni erogate"
+    ],
+    "sito": "http://www.cral-aermacchi.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 8,
+    "slug": "daymedical",
+    "nome": "DayMedical",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale"
+    ],
+    "sito": "http://www.daymedical.it",
+    "logo": "immag1009.gif",
+    "aventi_diritto": [],
+    "modalita": [
+      "telefonare al n. 02 33.600.780"
+    ]
+  },
+  {
+    "id": 10,
+    "slug": "fabi",
+    "nome": "Fabi",
+    "nome_esteso": "Fabi - Federazione Autonoma Bancari Italiani",
+    "tipo": [
+      "Indiretta con listino scontato"
+    ],
+    "sito": "http://www.fabi.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 1,
+    "slug": "fasi",
+    "nome": "FASI",
+    "nome_esteso": "FASI - Fondo Assistenza Sanitaria Integrativa",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.fasi.it",
+    "logo": "immag1001.jpg",
+    "aventi_diritto": [
+      "Iscritti al Fondo di Assistenza Sanitaria Integrativa"
+    ],
+    "modalita": [
+      "Fissare l'appuntamento direttamente con la segreteria di Multi Medica Varese",
+      "Al termine della visita/esame verificheremo la fruibilità della prestazione in forma diretta contattando in via telematica il fondo. In caso di validità della convenzione verranno applicate le tariffe in convenzione con FASI e l'assicurato pagherà solo l'importo derivante dalla differenza tra il nostro listino in convenzione e la quota di rimborso prevista dal FASI oltre al bollo nei casi previsti.",
+      "Documenti necessari da portare con se:",
+      "Documento di riconoscimento",
+      "n. iscrizione al FASI",
+      "Prescrizione del Medico in caso di diagnostica (esami, ecografie, ecg etc)"
+    ]
+  },
+  {
+    "id": 23,
+    "slug": "fasiopen",
+    "nome": "FasiOpen",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.fasiopen.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": [
+      "telefonare al numero verde 800 085 502"
+    ]
+  },
+  {
+    "id": 21,
+    "slug": "federdistribuzione",
+    "nome": "Federdistribuzione",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.federdistribuzione.rbmsalute.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 3,
+    "slug": "fisde-enel",
+    "nome": "FISDE Enel",
+    "nome_esteso": "Fondo Integrativo Sanitario per i Dipendenti del gruppo Enel",
+    "tipo": [
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.fisde.it",
+    "logo": null,
+    "aventi_diritto": [
+      "Dipendenti e familiari ENEL"
+    ],
+    "modalita": [
+      "Prendere appuntamento con la segreteria di Multi Medica Varese.",
+      "A seguito della visita, verrà inviata all'ARCA di Brescia il preventivo di spesa e la richiesta di autorizzazione per le prestazioni.",
+      "A seguito di esito positivo, l'ARCA autorizzerà le prestazioni.",
+      "Il paziente paga a Multi Medica Varese la quota derivante dall'importo delle prestazioni effettuate meno l'importo a carico del FISDE"
+    ]
+  },
+  {
+    "id": 17,
+    "slug": "faschim",
+    "nome": "Faschim",
+    "nome_esteso": "Fondo Nazionale di Assistenza Sanitaria per i lavoratori dell'industria chimica, chimico-farmaceutica, delle fibre chimiche e dei settori abrasivi, lubrificanti e gpl, minerario e coibenti.",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.faschim.it",
+    "logo": null,
+    "aventi_diritto": [
+      "Fondo Nazionale di Assistenza Sanitaria per i lavoratori dell'industria chimica, chimico-farmaceutica, delle fibre chimiche e dei settori abrasivi, lubrificanti e gpl, minerario e coibenti."
+    ],
+    "modalita": []
+  },
+  {
+    "id": 2,
+    "slug": "intesa-sanpaolo",
+    "nome": "Intesa Sanpaolo",
+    "nome_esteso": "Fondo Sanitario Integrativo del Gruppo Intesa SanPaolo",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.cassasanitariagruppointesasanpaolo.it",
+    "logo": "immag1014.jpg",
+    "aventi_diritto": [
+      "Dipendenti e familiari del Gruppo Intesa SanPaolo"
+    ],
+    "modalita": [
+      "1) Richiesta autorizzazione",
+      "Contattare la Centrale Operativa con un preavviso di 24 h lavorative e concordare la prenotazione.",
+      "800.08.37.78 da rete fissa",
+      "199.28.48.37 da rete mobile",
+      "(Da cellulare aziendale anteporre i codici per le chiamate personali, 9 per Vodafone e 4146 per Tim)",
+      "Sito Internet del Fondo > Area iscritto > Richiesta autorizzazione online",
+      "2) Conferma prenotazione",
+      "La Centrale Operativa conferma all’assistito il buon esito della prenotazione (tramite telefono / fax / e-mail / sms) e comunica l’eventuale spesa a suo carico.",
+      "3) Fruizione prestazione",
+      "Recarsi presso la struttura sanitaria convenzionata con l’autorizzazione ricevuta dalla Centrale Operativa (tramite telefono / fax / e-mail / sms).",
+      "4) Pagamento quota a carico dell’assistito",
+      "Pagare alla struttura sanitaria convenzionata l’eventuale imposta di bollo, scoperti franchigie e quote differite come comunicato dalla Centrale Operativa in fase di autorizzazione."
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "fondoest",
+    "nome": "FondoEst",
+    "nome_esteso": "FondoEst - Assistenza sanitaria integrativa commercio turismo servizi e settori affini",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.fondoest.it",
+    "logo": "immag1006.jpg",
+    "aventi_diritto": [
+      "Hanno diritto alle prestazioni di assistenza sanitaria garantite da Fondo Est tutti i lavoratori dipendenti a tempo indeterminato e gli apprendisti ai quali si applicano i CCNL dei settori Terziario e Turismo (pubblici esercizi, mense e agenzie di viaggio), del settore Ortofrutticolo e delle Aziende Farmaceutiche Speciali. Possono inoltre essere iscritti i lavoratori con contratto a tempo determinato di durata superiore a 3 mesi (per il CCNL Turismo) e i lavoratori con contratto a tempo determinato di durata superiore a 5 mesi (per il CCNL Ortofrutticolo)."
+    ],
+    "modalita": []
+  },
+  {
+    "id": 18,
+    "slug": "insieme-salute",
+    "nome": "Insieme Salute",
+    "nome_esteso": "Insieme salute - Società di mutuo soccorso",
+    "tipo": [
+      "Diretta ambulatoriale"
+    ],
+    "sito": "http://www.insiemesalute.org",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": [
+      "Telefonare al numero 02.37.05.20.67"
+    ]
+  },
+  {
+    "id": 20,
+    "slug": "previass",
+    "nome": "Previass",
+    "nome_esteso": "Previass - Cassa Interaziendale di Assistenza per le Aziende clienti del Gruppo Willis Italia S.p.A",
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.previass2.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 13,
+    "slug": "previmedical",
+    "nome": "Previmedical",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.previmedical.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 22,
+    "slug": "rbm-salute",
+    "nome": "RBM Salute",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.federdistribuzione.rbmsalute.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": []
+  },
+  {
+    "id": 9,
+    "slug": "sanicard",
+    "nome": "Sanicard",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale"
+    ],
+    "sito": "http://www.sistemisanitari.it",
+    "logo": "immag1011.jpg",
+    "aventi_diritto": [],
+    "modalita": [
+      "A partire dal 1° luglio 2014, per tutti i servizi devi contattare il seguente numero verde dedicato della Centrale Operativa UniSalute:",
+      "800-903063",
+      "(dall’estero: + 39 051 4161791)",
+      "8,30 19,30 dal lunedì al venerdì",
+      "Sabato, domenica e festivi è attivo un servizio di raccolta richieste di informazioni",
+      "Per prenotare la prestazione telefona al numero verde sopra indicato: sarà UniSalute a contattare la struttura convenzionata e a comunicarti l’appuntamento. Dovrai contattare UniSalute anche per usufruire delle tariffe scontate nelle strutture convenzionate.",
+      "Importante: ti ricordiamo che la carta sanitaria in tuo possesso non abilita all’accesso alla rete delle strutture sanitarie convenzionate e quindi non dovrai più utilizzarla."
+    ]
+  },
+  {
+    "id": 19,
+    "slug": "sara",
+    "nome": "Sara",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale"
+    ],
+    "sito": "http://www.sara.it",
+    "logo": null,
+    "aventi_diritto": [],
+    "modalita": [
+      "Telefonare al numero verde",
+      "Basta rivolgersi alla Centrale Operativa; il numero lo trovi nel Fascicolo Informativo della tua polizza. Saranno loro a contattarci in modo da fissare l’appuntamento."
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "unisalute",
+    "nome": "UniSalute",
+    "nome_esteso": null,
+    "tipo": [
+      "Diretta ambulatoriale",
+      "Diretta odontoiatrica"
+    ],
+    "sito": "http://www.unisalute.it",
+    "logo": "immag1005.jpg",
+    "aventi_diritto": [
+      "Iscritti ad UNISALUTE"
+    ],
+    "modalita": [
+      "Fissare l'appuntamento contattando Multi Medica Varese allo 0332 287257",
+      "Contattare UNISALUTE a mezzo telefono o tramite il sito www.unisalute.it e comunicare data, nome del medico e tipologia di prestazioni da effettuare.",
+      "Unisalute ci invierà a mezzo fax la Presa in carico dei costi, specificando eventuali franchigie a carico dell'assistito"
+    ]
+  }
+]
