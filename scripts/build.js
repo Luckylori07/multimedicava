@@ -25,6 +25,14 @@ const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const written = [];
 
+/* meta description: massimo 160 caratteri; aggiunge i pezzi opzionali solo se ci stanno */
+function fit(base, ...optional) {
+  let out = base;
+  for (const o of optional) if (o && (out + ' ' + o).length <= 160) out += ' ' + o;
+  if (out.length > 160) out = out.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+  return out;
+}
+
 function write(rel, content) {
   const full = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(full), { recursive: true });
@@ -151,7 +159,7 @@ function header(root, activeKey, file) {
     const attr = exact ? ' aria-current="page"' : activeKey === n.key ? ' class="is-active"' : '';
     return `<li><a href="${root}${n.href}"${attr}>${esc(n.label)}</a></li>`;
   }).join('');
-  return `<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  return `<a class="skip-link" href="#contenuto">Al contenuto principale</a>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="${root}index.html" aria-label="Multi Medica Varese – pagina iniziale">
@@ -201,7 +209,8 @@ function footer(root) {
 <a class="call-bar" href="${telHref}">${icon('phone', 24)}Chiama ${tel}</a>`;
 }
 
-function page({ file, title, description, main, activeKey = '', jsonld = [], comment = '' }) {
+function page({ file, title, description: rawDescription, main, activeKey = '', jsonld = [], comment = '' }) {
+  const description = fit(rawDescription);
   const depth = file.split('/').length - 1;
   const root = '../'.repeat(depth);
   const url = `${site.baseUrl}/${file === 'index.html' ? '' : file}`;
@@ -217,7 +226,9 @@ function page({ file, title, description, main, activeKey = '', jsonld = [], com
 ${site.proposta ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow">'}
 <meta name="theme-color" content="#286b82">
 ${site.proposta ? '' : `<link rel="canonical" href="${url}">`}
+<link rel="icon" type="image/svg+xml" href="${root}assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="${root}assets/img/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="${root}assets/img/favicon.ico" sizes="16x16">
 <link rel="apple-touch-icon" href="${root}assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
@@ -229,6 +240,8 @@ ${site.proposta ? '' : `<link rel="canonical" href="${url}">`}
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="${root}assets/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="${root}assets/fonts/atkinson-hyperlegible-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="${root}assets/css/style.css">
 <script src="${root}assets/js/main.js"></script>
 ${ld}
@@ -248,7 +261,7 @@ function contactBlock() {
   return `<ul class="contact-list">
     <li><span class="ico">${icon('phone')}</span><div><strong>Telefono</strong><a href="${telHref}">${tel}</a></div></li>
     <li><span class="ico">${icon('mail')}</span><div><strong>Email</strong><a href="mailto:${site.email}">${site.email}</a></div></li>
-    <li><span class="ico">${icon('pin')}</span><div><strong>Indirizzo</strong><span class="v">${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</span><br><a href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Apri la mappa su Google Maps (si apre in una nuova scheda)">Apri la mappa</a></div></li>
+    <li><span class="ico">${icon('pin')}</span><div><strong>Indirizzo</strong><span class="v">${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</span><br><a href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Mappa su Google Maps (si apre in una nuova scheda)">Mappa su Google Maps</a></div></li>
   </ul>`;
 }
 function hoursBox(h = 'h2') {
@@ -256,7 +269,6 @@ function hoursBox(h = 'h2') {
     <${h}>Orari</${h}>
     <p class="t1">${esc(site.orari.titolo)}</p>
     <p class="t2">${esc(site.orari.giorni)}<br>${esc(site.orari.fascia)}</p>
-    <p class="t3">Per appuntamenti: <a href="${telHref}">${tel}</a></p>
   </div>`;
 }
 function asideContacts() {
@@ -266,7 +278,7 @@ function asideContacts() {
   </aside>`;
 }
 function actionButtons() {
-  return `<div class="btn-row"><a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a><a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Scrivi alla segreteria</a></div>`;
+  return `<div class="btn-row"><a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a><a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Email alla segreteria</a></div>`;
 }
 function filterBox({ id, listId, label, noun, nounOne, total }) {
   return `<div class="filter">
@@ -275,19 +287,21 @@ function filterBox({ id, listId, label, noun, nounOne, total }) {
     <p class="filter-status" id="${id}-status" role="status" aria-live="polite">${total} ${noun}</p>
   </div>`;
 }
+function row(href, nome, meta, search) {
+  return `<li data-filter-item data-search="${esc(search)}"><a href="${href}"><span class="row-name">${esc(nome)}</span><span class="row-meta">${esc(meta)}</span></a></li>`;
+}
 function ambCard(a, root) {
   const search = norm([a.nome, ...a.medici.map((m) => m.nome), ...a.prestazioni, ...(a.prestazioni_gruppi || []).flat()].join(' '));
-  return `<li data-filter-item data-search="${esc(search)}"><a class="card" href="${root}${slugAmb(a)}"><span class="card-icon">${icon('cross', 22)}</span><span><span class="card-title">${esc(a.nome)}</span><span class="card-meta">${plural(a.medici.length, 'medico', 'medici')}</span></span><span class="card-arrow">${icon('arrow', 22)}</span></a></li>`;
+  return row(`${root}${slugAmb(a)}`, a.nome, plural(a.medici.length, 'medico', 'medici'), search);
 }
 function diagCard(d, root) {
   const search = norm([d.nome, ...d.esami.map((e) => e.nome)].join(' '));
-  return `<li data-filter-item data-search="${esc(search)}"><a class="card" href="${root}${slugDiag(d)}"><span class="card-icon">${icon('cross', 22)}</span><span><span class="card-title">${esc(d.nome)}</span><span class="card-meta">${plural(d.esami.length, 'esame', 'esami')}</span></span><span class="card-arrow">${icon('arrow', 22)}</span></a></li>`;
+  return row(`${root}${slugDiag(d)}`, d.nome, plural(d.esami.length, 'esame', 'esami'), search);
 }
-function pageHero({ eyebrow, h1, lead, photoKey, root, actions = true }) {
+function pageHero({ h1, lead, photoKey, root, actions = true }) {
   return `<section class="page-hero" aria-labelledby="titolo-pagina">
     <div class="wrap page-hero-grid${photoKey ? ' has-photo' : ''}">
       <div>
-        ${eyebrow ? `<p class="eyebrow">${esc(eyebrow)}</p>` : ''}
         <h1 id="titolo-pagina">${esc(h1)}</h1>
         ${lead ? `<p class="lead">${esc(lead)}</p>` : ''}
         ${actions ? actionButtons() : ''}
@@ -309,91 +323,73 @@ function homePage() {
     main: (root) => `<main id="contenuto" tabindex="-1">
   <section class="hero" aria-labelledby="titolo-pagina">
     <div class="wrap hero-grid">
-      <div>
-        <p class="eyebrow">Poliambulatorio specialistico · Varese</p>
-        <h1 id="titolo-pagina">Multi Medica Varese</h1>
-        <p class="lead">Poliambulatorio specialistico nel centro di Varese, in Via Piave 9. Società a responsabilità limitata dal 1993, con ${ambulatori.length} ambulatori e servizi di diagnostica.</p>
-        <div class="btn-row">
-          <a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a>
-          <a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Scrivi alla segreteria</a>
-          <a class="btn btn-ghost" href="${root}ambulatori/index.html">Vedi gli ambulatori</a>
-        </div>
+      <h1 id="titolo-pagina">Multi Medica Varese</h1>
+      <div class="hero-info">
+        <p class="lead">Poliambulatorio specialistico nel centro di Varese, in Via Piave 9.</p>
+        <a class="phone" href="${telHref}">${icon('phone', 34)}<span class="visually-hidden">Chiama </span>${tel}</a>
+        <p class="hours-line"><strong>${esc(site.orari.titolo)}</strong><br>${esc(site.orari.giorni)}, ${esc(site.orari.fascia)}</p>
       </div>
-      <div class="hero-photos">
-        ${photo('reception', root, { eager: true })}
-        ${photo('sala-attesa', root)}
-      </div>
+      ${photo('reception', root, { eager: true })}
     </div>
   </section>
 
-  <section class="quick" aria-label="Contatti rapidi">
+  <section class="section" id="ambulatori" aria-labelledby="titolo-ambulatori">
     <div class="wrap">
-      <ul class="quick-grid">
-        <li><div class="quick-card"><span class="ico">${icon('phone', 26)}</span><div><h2>Telefono</h2><a class="big" href="${telHref}">${tel}</a><p class="muted">Segreteria</p></div></div></li>
-        <li><div class="quick-card"><span class="ico">${icon('mail', 26)}</span><div><h2>Email</h2><a class="big mail" href="mailto:${site.email}">${site.email}</a><p class="muted">Rispondiamo agli indirizzi indicati</p></div></div></li>
-        <li><div class="quick-card"><span class="ico">${icon('clock', 26)}</span><div><h2>Orari</h2><span class="big">${esc(site.orari.giorni.charAt(0).toUpperCase() + site.orari.giorni.slice(1))}<br>${esc(site.orari.fascia)}</span><p class="muted">${esc(site.orari.titolo)}</p></div></div></li>
-      </ul>
+      <div class="section-head">
+        <h2 id="titolo-ambulatori">Ambulatori</h2>
+        <p>${ambulatori.length} specialità. Scelga un ambulatorio per consultare le prestazioni eseguite e i medici.</p>
+      </div>
+      <ul class="index cols">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
+      <p style="margin-top:24px"><a class="textlink" href="${root}ambulatori/index.html">Cerca per medico o prestazione</a></p>
+    </div>
+  </section>
+
+  <section class="section section-glass" id="diagnostica" aria-labelledby="titolo-diagnostica">
+    <div class="wrap split">
+      <div>
+        <h2 id="titolo-diagnostica">Diagnostica</h2>
+        <p class="lead">Esami e prestazioni diagnostiche eseguiti in sede, in ${diagnostica.length} aree.</p>
+        <ul class="index">${diagnostica.map((d) => diagCard(d, root)).join('')}</ul>
+      </div>
+      <div class="stack">${photo('esami', root)}${photo('eco', root)}</div>
     </div>
   </section>
 
   <section class="section" aria-labelledby="chi-siamo">
-    <div class="wrap split split-wide">
+    <div class="wrap split">
       <div>
         <h2 id="chi-siamo">Due parole su di noi</h2>
         ${site.chiSiamo.map((p) => `<p>${esc(p)}</p>`).join('\n        ')}
         <ul class="values" aria-label="Valori dichiarati">${site.valori.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>
       </div>
-      ${hoursBox('h2')}
+      ${photo('sala-attesa', root)}
     </div>
   </section>
 
-  <section class="section section-alt" id="ambulatori" aria-labelledby="titolo-ambulatori">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="titolo-ambulatori">I nostri ambulatori</h2>
-        <p>${ambulatori.length} ambulatori specialistici. Scegli la specialità per vedere le prestazioni eseguite e i medici.</p>
-      </div>
-      <ul class="cards cols-4">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
-      <p style="margin-top:24px"><a class="btn btn-ghost" href="${root}ambulatori/index.html">Tutti gli ambulatori ${icon('arrow', 20)}</a></p>
-    </div>
-  </section>
-
-  <section class="section band" id="diagnostica" aria-labelledby="titolo-diagnostica">
-    <div class="wrap split">
-      <div>
-        <h2 id="titolo-diagnostica">Diagnostica</h2>
-        <p class="lead">Esami e prestazioni diagnostiche eseguiti in sede, in ${diagnostica.length} aree.</p>
-        <ul class="chips">${diagnostica.map((d) => `<li><a class="chip" href="${root}${slugDiag(d)}">${esc(d.nome)}</a></li>`).join('')}</ul>
-        <p style="margin-top:24px"><a class="btn btn-light" href="${root}diagnostica/index.html">Vai alla diagnostica ${icon('arrow', 20)}</a></p>
-      </div>
-      <div class="duo">${photo('esami', root)}${photo('eco', root)}</div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="titolo-conv">
+  <section class="section section-glass" aria-labelledby="titolo-conv">
     <div class="wrap">
       <div class="section-head">
         <h2 id="titolo-conv">Convenzioni</h2>
-        <p>${convenzioni.length} convenzioni con fondi sanitari e assicurazioni, in forma diretta o indiretta. Per sapere se la tua è attiva, chiama la segreteria.</p>
+        <p>${convenzioni.length} convenzioni con fondi sanitari e assicurazioni, in forma diretta o indiretta. Per sapere se la Sua è attiva, chiami la segreteria.</p>
       </div>
-      <ul class="conv-strip">${featured.map((c) => `<li><a class="conv-tile" href="${root}convenzioni.html#${c.slug}">${c.logo ? logoImg(c, root, c.nome) : esc(c.nome)}</a></li>`).join('')}</ul>
-      <a class="btn btn-ghost" href="${root}convenzioni.html">Tutte le convenzioni ${icon('arrow', 20)}</a>
+      <ul class="conv-strip">${convenzioni.map((c) => `<li><a class="conv-tile" href="${root}convenzioni.html#${c.slug}">${c.logo ? logoImg(c, root, c.nome) : esc(c.nome)}</a></li>`).join('')}</ul>
+      <a class="textlink" href="${root}convenzioni.html">Elenco completo e modalità operative</a>
     </div>
   </section>
 
-  <section class="section section-alt" aria-labelledby="titolo-dove">
+  <section class="section" aria-labelledby="titolo-dove">
     <div class="wrap split">
       <div>
         <h2 id="titolo-dove">Come raggiungerci</h2>
         <p>${esc(site.raggiungerci.intro)}</p>
-        <ul>${site.raggiungerci.punti.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
+        <ul class="bullets">${site.raggiungerci.punti.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
         <p><strong>${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</strong></p>
-        <div class="btn-row"><a class="btn btn-primary" href="${root}dove-siamo.html">Dove siamo</a><a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Calcola il percorso su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Calcola il percorso</a></div>
+        <div class="btn-row"><a class="btn btn-primary" href="${root}dove-siamo.html">Dove siamo</a><a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Percorso su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Percorso su Google Maps</a></div>
       </div>
-      <div class="callout">
-        <h3>Ozonoterapia</h3>
+      <div>
+        <h2>Ozonoterapia</h2>
         <p>Informazioni sulla terapia con ozono, dalla sezione novità del poliambulatorio.</p>
-        <p><a class="btn btn-ghost" href="${root}ozonoterapia.html">Leggi la pagina dedicata</a></p>
+        <a class="textlink" href="${root}ozonoterapia.html">Pagina dedicata all'ozonoterapia</a>
       </div>
     </div>
   </section>
@@ -412,11 +408,11 @@ function ambulatoriIndex() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Poliambulatorio specialistico', h1: 'Ambulatori', lead: `${ambulatori.length} ambulatori specialistici nel centro di Varese. Scegli la specialità per vedere prestazioni e medici; per fissare un appuntamento chiama la segreteria.`, photoKey: 'studio-odontoiatrico', root })}
+  ${pageHero({ h1: 'Ambulatori', lead: `${ambulatori.length} ambulatori specialistici nel centro di Varese. Scelga la specialità per consultare prestazioni e medici; per fissare un appuntamento chiami la segreteria.`, photoKey: 'studio-odontoiatrico', root })}
   <section class="section" aria-label="Elenco degli ambulatori">
     <div class="wrap">
-      ${filterBox({ id: 'q-amb', listId: 'lista-ambulatori', label: 'Cerca un ambulatorio, un medico o una prestazione', noun: 'ambulatori', nounOne: 'ambulatorio', total: ambulatori.length })}
-      <ul class="cards cols-4" id="lista-ambulatori">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
+      ${filterBox({ id: 'q-amb', listId: 'lista-ambulatori', label: 'Ricerca di un ambulatorio, di un medico o di una prestazione', noun: 'ambulatori', nounOne: 'ambulatorio', total: ambulatori.length })}
+      <ul class="index cols" id="lista-ambulatori">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
     </div>
   </section>
 </main>`,
@@ -427,24 +423,24 @@ function ambulatorioPage(a, i) {
   const crumbs = [{ label: 'Home', href: 'index.html' }, { label: 'Ambulatori', href: 'ambulatori/index.html' }, { label: a.nome, href: slugAmb(a) }];
   const prev = ambulatori[(i + ambulatori.length - 1) % ambulatori.length];
   const next = ambulatori[(i + 1) % ambulatori.length];
-  const lead = a.descrizione || `Ambulatorio di ${a.nome} presso Multi Medica Varese. Per informazioni contatta la segreteria.`;
+  const lead = a.descrizione || `Ambulatorio di ${a.nome} presso Multi Medica Varese. Per informazioni contatti la segreteria.`;
   const linkedDiag = a.diagnostiche.map((s) => diagBySlug[s]).filter(Boolean);
   const list = (arr, cols) => `<ul class="checklist${cols ? ' cols' : ''}">${arr.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
   let prestHtml;
   if (a.prestazioni_gruppi && a.prestazioni_gruppi.length) prestHtml = a.prestazioni_gruppi.map((g) => list(g, true)).join('');
   else if (a.prestazioni.length) prestHtml = list(a.prestazioni, a.prestazioni.length > 6);
-  else prestHtml = `<p class="empty">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>`;
+  else prestHtml = `<p class="empty">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>`;
   const docs = a.medici.map((m) => `<li class="doc"><h3>${esc(docName(m))}</h3>${m.qualifiche.length ? `<ul class="quals">${m.qualifiche.map((q) => `<li>${esc(q)}</li>`).join('')}</ul>` : ''}${m.prestazioni.length ? `<details><summary>Prestazioni del medico</summary><ul>${m.prestazioni.map((p) => `<li>${esc(p)}</li>`).join('')}</ul></details>` : ''}</li>`).join('');
   const names = a.medici.map((m) => m.nome).join(', ');
   return page({
     file: slugAmb(a),
     title: `${a.nome} a Varese | Multi Medica Varese`,
-    description: `Ambulatorio di ${a.nome} a Varese presso Multi Medica Varese, Via Piave 9${names ? `. Medici: ${names}` : ''}. Appuntamenti: ${tel}.`.slice(0, 300),
+    description: fit(`Ambulatorio di ${a.nome} a Varese, presso Multi Medica Varese in Via Piave 9.`, `Appuntamenti: ${tel}.`, names ? `Medici: ${names}.` : ''),
     activeKey: 'ambulatori',
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Ambulatorio', h1: a.nome, lead, photoKey: a.foto, root })}
+  ${pageHero({ h1: a.nome, lead, photoKey: a.foto, root })}
   <div class="wrap layout">
     <div>
       <section class="panel" aria-labelledby="prestazioni"><h2 id="prestazioni">Prestazioni eseguite</h2>${prestHtml}</section>
@@ -472,10 +468,10 @@ function diagnosticaIndex() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Esami e prestazioni', h1: 'Diagnostica', lead: `${diagnostica.length} aree di diagnostica. Scegli l'area per vedere gli esami eseguiti; per un appuntamento chiama la segreteria.`, photoKey: 'studio-ecografia', root })}
+  ${pageHero({ h1: 'Diagnostica', lead: `${diagnostica.length} aree di diagnostica. Scelga l'area per consultare gli esami eseguiti; per un appuntamento chiami la segreteria.`, photoKey: 'studio-ecografia', root })}
   <section class="section" aria-label="Elenco della diagnostica">
     <div class="wrap">
-      <ul class="cards" id="lista-diagnostica">${diagnostica.map((d) => diagCard(d, root)).join('')}</ul>
+      <ul class="index cols" id="lista-diagnostica">${diagnostica.map((d) => diagCard(d, root)).join('')}</ul>
     </div>
   </section>
 </main>`,
@@ -489,16 +485,16 @@ function diagnosticaPage(d, i) {
   const linked = d.ambulatori.map((s) => ambBySlug[s]).filter(Boolean);
   const exams = d.esami.length
     ? `<ul class="exam-list">${d.esami.map((e) => `<li><strong>${esc(e.nome)}</strong>${e.descrizione ? `<span>${esc(e.descrizione)}</span>` : ''}</li>`).join('')}</ul>`
-    : `<p class="empty">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a></p>`;
+    : `<p class="empty">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a></p>`;
   return page({
     file: slugDiag(d),
     title: `Diagnostica: ${d.nome} a Varese | Multi Medica Varese`,
-    description: `Diagnostica ${d.nome} a Varese presso Multi Medica Varese, Via Piave 9: ${d.esami.slice(0, 3).map((e) => e.nome).join(', ')}. Appuntamenti: ${tel}.`.slice(0, 300),
+    description: fit(`Diagnostica ${d.nome} a Varese, presso Multi Medica Varese in Via Piave 9.`, `Appuntamenti: ${tel}.`, d.esami.length ? `Esami: ${d.esami.map((x) => x.nome).join(', ')}.` : ''),
     activeKey: 'diagnostica',
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Diagnostica', h1: d.nome, lead: `Esami eseguiti in sede. Per informazioni e appuntamenti contatta la segreteria.`, photoKey: d.foto, root })}
+  ${pageHero({ h1: d.nome, lead: `Esami eseguiti in sede. Per informazioni e appuntamenti contatti la segreteria.`, photoKey: d.foto, root })}
   <div class="wrap layout">
     <div>
       <section class="panel" aria-labelledby="esami"><h2 id="esami">Esami eseguiti</h2>${exams}</section>
@@ -520,11 +516,13 @@ function mediciPage() {
   const unique = new Set(medici.flatMap((s) => s.medici.map((m) => m.nome))).size;
   const items = medici.map((s) => {
     const search = norm([s.specialita, ...s.medici.map((m) => m.nome)].join(' '));
-    return `<li data-filter-item data-search="${esc(search)}"><article class="spec">
-      <h2><a href="${'%ROOT%'}ambulatori/${s.ambulatorio}.html">${esc(s.specialita)}</a></h2>
-      <ul>${s.medici.map((m) => `<li><strong>${esc(docName(m))}</strong>${m.qualifiche.length ? `<span class="q">${esc(m.qualifiche.join(' · '))}</span>` : ''}</li>`).join('')}</ul>
-      <a href="${'%ROOT%'}ambulatori/${s.ambulatorio}.html">Vai all'ambulatorio<span class="visually-hidden"> di ${esc(s.specialita)}</span></a>
-    </article></li>`;
+    return `<li data-filter-item data-search="${esc(search)}">
+      <h2>${esc(s.specialita)}</h2>
+      <div>
+        <ul>${s.medici.map((m) => `<li><strong>${esc(docName(m))}</strong>${m.qualifiche.length ? `<span class="q">${esc(m.qualifiche.join(' · '))}</span>` : ''}</li>`).join('')}</ul>
+        <a class="textlink" href="%ROOT%ambulatori/${s.ambulatorio}.html">Scheda dell'ambulatorio<span class="visually-hidden"> di ${esc(s.specialita)}</span></a>
+      </div>
+    </li>`;
   });
   return page({
     file: 'medici.html',
@@ -534,11 +532,11 @@ function mediciPage() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Il nostro team', h1: 'Medici specialisti', lead: `Elenco dei medici per specialità (${unique} professionisti, alcuni presenti in più ambulatori). Seleziona la specialità per vedere prestazioni e contatti.`, root })}
+  ${pageHero({ h1: 'Medici specialisti', lead: `Elenco dei medici per specialità (${unique} professionisti, alcuni presenti in più ambulatori). Selezioni la specialità per consultare prestazioni e contatti.`, root })}
   <section class="section" aria-label="Elenco dei medici per specialità">
     <div class="wrap">
-      ${filterBox({ id: 'q-med', listId: 'lista-medici', label: 'Cerca un medico o una specialità', noun: 'specialità', nounOne: 'specialità', total: medici.length })}
-      <ul class="spec-grid" id="lista-medici">${items.join('').split('%ROOT%').join(root)}</ul>
+      ${filterBox({ id: 'q-med', listId: 'lista-medici', label: 'Ricerca di un medico o di una specialità', noun: 'specialità', nounOne: 'specialità', total: medici.length })}
+      <ul class="dir" id="lista-medici">${items.join('').split('%ROOT%').join(root)}</ul>
     </div>
   </section>
 </main>`,
@@ -558,7 +556,7 @@ function convenzioniPage() {
     const details = `<details class="more"><summary>Come fare?</summary>
         ${c.aventi_diritto.length ? `<h3>Hanno diritto alla convenzione</h3>${c.aventi_diritto.map((p) => `<p>${linkify(p)}</p>`).join('')}` : ''}
         ${c.modalita.length ? `<h3>Modalità operative</h3>${c.modalita.map((p) => `<p>${linkify(p)}</p>`).join('')}` : ''}
-        ${hasDetails ? '' : `<p>Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a>.</p>`}
+        ${hasDetails ? '' : `<p>Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a>.</p>`}
       </details>`;
     return `<li data-filter-item data-search="${esc(search)}"><article class="conv-card" id="${c.slug}">
       <div class="conv-logo">${logo}</div>
@@ -577,10 +575,10 @@ function convenzioniPage() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Fondi sanitari e assicurazioni', h1: 'Convenzioni', lead: `${convenzioni.length} convenzioni attive, in forma diretta o indiretta. Per i dettagli e per verificare la tua copertura contatta la segreteria.`, root })}
+  ${pageHero({ h1: 'Convenzioni', lead: `${convenzioni.length} convenzioni, in forma diretta o indiretta. Per i dettagli e per verificare la Sua copertura contatti la segreteria.`, root })}
   <section class="section" aria-label="Elenco delle convenzioni">
     <div class="wrap">
-      ${filterBox({ id: 'q-conv', listId: 'lista-convenzioni', label: 'Cerca una convenzione (nome o tipo)', noun: 'convenzioni', nounOne: 'convenzione', total: convenzioni.length })}
+      ${filterBox({ id: 'q-conv', listId: 'lista-convenzioni', label: 'Ricerca di una convenzione per nome o tipo', noun: 'convenzioni', nounOne: 'convenzione', total: convenzioni.length })}
       <ul class="conv-list" id="lista-convenzioni">${cards.join('').split('%ROOT%').join(root)}</ul>
     </div>
   </section>
@@ -600,12 +598,12 @@ function ozonoPage() {
     comment: "TESTO CLINICO FEDELE ALL'ORIGINALE (it/include/news_dett.php?id=7): DA VALIDARE CON IL DIRETTORE SANITARIO PRIMA DELLA PUBBLICAZIONE",
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: `Novità · pubblicato il ${o.pubblicatoEsteso}`, h1: o.titolo, root })}
+  ${pageHero({ h1: o.titolo, lead: `Pubblicato il ${o.pubblicatoEsteso}`, root, actions: false })}
   <div class="wrap layout">
     <article class="panel prose">
       ${o.paragrafi.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
       <ul>${o.elenco.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
-      <p class="notice">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>
+      <p class="notice">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>
     </article>
     ${asideContacts()}
   </div>
@@ -623,7 +621,7 @@ function doveSiamoPage() {
     jsonld: [clinicJsonLd(), breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Contatti', h1: 'Dove siamo', lead: 'Poliambulatorio specialistico in una zona logisticamente ideale nel centro di Varese.', root, actions: false })}
+  ${pageHero({ h1: 'Dove siamo', lead: 'Poliambulatorio specialistico in una zona logisticamente ideale nel centro di Varese.', root, actions: false })}
   <div class="wrap layout single">
     <div class="split">
       <section class="panel" aria-labelledby="contatti"><h2 id="contatti">${esc(site.ragioneSociale)}</h2>
@@ -642,8 +640,8 @@ function doveSiamoPage() {
           <p>${esc(site.raggiungerci.intro)}</p>
           <ul>${site.raggiungerci.punti.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Apri la mappa su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Apri la mappa</a>
-            <a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Calcola il percorso su Google Maps (si apre in una nuova scheda)">Calcola il percorso</a>
+            <a class="btn btn-primary" href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Mappa su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Mappa su Google Maps</a>
+            <a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Percorso su Google Maps (si apre in una nuova scheda)">Percorso su Google Maps</a>
           </div>
         </section>
         <div style="margin-top:20px">${hoursBox('h2')}</div>
@@ -663,7 +661,7 @@ function privacyPage() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Informazioni legali', h1: 'Informativa sulla privacy', lead: 'Come questo sito tratta i dati personali dei visitatori (Regolamento UE 2016/679, «GDPR»).', root, actions: false })}
+  ${pageHero({ h1: 'Informativa sulla privacy', lead: 'Come questo sito tratta i dati personali dei visitatori (Regolamento UE 2016/679, «GDPR»).', root, actions: false })}
   <div class="wrap layout single">
     <article class="panel prose">
       <p class="notice">Informativa proposta insieme al sito: da verificare e completare con il titolare del trattamento prima della pubblicazione definitiva.</p>
@@ -675,7 +673,7 @@ function privacyPage() {
       <h2>Dati di navigazione</h2>
       <p>Come ogni sito web, il server che ospita le pagine può registrare nei propri log tecnici alcune informazioni necessarie al funzionamento e alla sicurezza del servizio (ad esempio indirizzo IP, data e ora, pagina richiesta). Il titolare non utilizza queste informazioni per identificare i visitatori.</p>
       <h2>Contatti tramite telefono ed email</h2>
-      <p>I collegamenti «Chiama» e «Scrivi» aprono l'applicazione telefonica o il programma di posta del dispositivo dell'utente. I dati che l'utente sceglie di comunicare (ad esempio nome, recapito, richiesta) sono trattati dal titolare solo per rispondere alla richiesta o fissare un appuntamento, e conservati per il tempo necessario a tale finalità.</p>
+      <p>I collegamenti «Chiama» ed «Email» aprono l'applicazione telefonica o il programma di posta del dispositivo dell'utente. I dati che l'utente sceglie di comunicare (ad esempio nome, recapito, richiesta) sono trattati dal titolare solo per rispondere alla richiesta o fissare un appuntamento, e conservati per il tempo necessario a tale finalità.</p>
       <h2>Collegamenti a siti esterni</h2>
       <p>Il sito contiene collegamenti a siti di terzi (ad esempio Google Maps e i siti dei fondi sanitari e delle assicurazioni convenzionate). Questi siti hanno proprie informative sulla privacy e propri cookie, sui quali il titolare non ha controllo.</p>
       <h2>Diritti dell'interessato</h2>

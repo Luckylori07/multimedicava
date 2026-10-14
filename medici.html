@@ -8,7 +8,9 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#286b82">
 
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" sizes="16x16">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
@@ -20,12 +22,14 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/atkinson-hyperlegible-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
 <script src="assets/js/main.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.multimedicava.com/index.html"},{"@type":"ListItem","position":2,"name":"Medici","item":"https://www.multimedicava.com/medici.html"}]}</script>
 </head>
 <body>
-<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+<a class="skip-link" href="#contenuto">Al contenuto principale</a>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Multi Medica Varese – pagina iniziale">
@@ -41,10 +45,9 @@
   <section class="page-hero" aria-labelledby="titolo-pagina">
     <div class="wrap page-hero-grid">
       <div>
-        <p class="eyebrow">Il nostro team</p>
         <h1 id="titolo-pagina">Medici specialisti</h1>
-        <p class="lead">Elenco dei medici per specialità (35 professionisti, alcuni presenti in più ambulatori). Seleziona la specialità per vedere prestazioni e contatti.</p>
-        <div class="btn-row"><a class="btn btn-call" href="tel:+390332287257"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Chiama 0332 287257</a><a class="btn btn-ghost" href="mailto:info@multimedicava.com"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Scrivi alla segreteria</a></div>
+        <p class="lead">Elenco dei medici per specialità (35 professionisti, alcuni presenti in più ambulatori). Selezioni la specialità per consultare prestazioni e contatti.</p>
+        <div class="btn-row"><a class="btn btn-call" href="tel:+390332287257"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>Chiama 0332 287257</a><a class="btn btn-ghost" href="mailto:info@multimedicava.com"><svg class="i" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>Email alla segreteria</a></div>
       </div>
       
     </div>
@@ -52,107 +55,155 @@
   <section class="section" aria-label="Elenco dei medici per specialità">
     <div class="wrap">
       <div class="filter">
-    <label for="q-med">Cerca un medico o una specialità</label>
+    <label for="q-med">Ricerca di un medico o di una specialità</label>
     <input id="q-med" type="search" autocomplete="off" data-filter="#lista-medici" data-noun="specialità" data-noun-one="specialità" aria-describedby="q-med-status">
     <p class="filter-status" id="q-med-status" role="status" aria-live="polite">24 specialità</p>
   </div>
-      <ul class="spec-grid" id="lista-medici"><li data-filter-item data-search="andrologia francesco marone"><article class="spec">
-      <h2><a href="ambulatori/andrologia.html">Andrologia</a></h2>
-      <ul><li><strong>Dott. Francesco Marone</strong><span class="q">Medico chirurgo · Specialista in Urologia · Specialista in Andrologia</span></li></ul>
-      <a href="ambulatori/andrologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Andrologia</span></a>
-    </article></li><li data-filter-item data-search="angiologia antonino tarallo"><article class="spec">
-      <h2><a href="ambulatori/angiologia.html">Angiologia</a></h2>
-      <ul><li><strong>Dott. Antonino Tarallo</strong></li></ul>
-      <a href="ambulatori/angiologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Angiologia</span></a>
-    </article></li><li data-filter-item data-search="cardiologia gianmarco dacquino mariangela lattanzio fabrizio morandi stefano provasoli"><article class="spec">
-      <h2><a href="ambulatori/cardiologia.html">Cardiologia</a></h2>
-      <ul><li><strong>Dott. Gianmarco Dacquino</strong></li><li><strong>Dott.ssa Mariangela Lattanzio</strong><span class="q">Specialista in Cardiologia · Ospedale di Circolo e Fondazione Macchi Varese</span></li><li><strong>Dott. Fabrizio Morandi</strong><span class="q">Specialista in Cardiologia · Specialista in Medicina Nucleare · Ospedale di Circolo e Fond. Macchi Varese</span></li><li><strong>Dott. Stefano Provasoli</strong><span class="q">Specialista in Cardiologia · Ospedale di Circolo e Fond. Macchi Varese</span></li></ul>
-      <a href="ambulatori/cardiologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Cardiologia</span></a>
-    </article></li><li data-filter-item data-search="chirurgia anna cremona"><article class="spec">
-      <h2><a href="ambulatori/chirurgia.html">Chirurgia</a></h2>
-      <ul><li><strong>Dott.ssa Anna Cremona</strong><span class="q">Specialista in Chirurgia Generale · Ospedale di Circolo - VARESE</span></li></ul>
-      <a href="ambulatori/chirurgia.html">Vai all'ambulatorio<span class="visually-hidden"> di Chirurgia</span></a>
-    </article></li><li data-filter-item data-search="dermatologia sandra leuchi"><article class="spec">
-      <h2><a href="ambulatori/dermatologia.html">Dermatologia</a></h2>
-      <ul><li><strong>Dott.ssa Sandra Leuchi</strong><span class="q">Medico chirurgo · Specialista in Dermatologia e Venereologia</span></li></ul>
-      <a href="ambulatori/dermatologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Dermatologia</span></a>
-    </article></li><li data-filter-item data-search="diagnostica per immagini - ecografia massimo paolucci"><article class="spec">
-      <h2><a href="ambulatori/diagnostica-per-immagini-ecografia.html">Diagnostica per immagini - Ecografia</a></h2>
-      <ul><li><strong>Dott. Massimo Paolucci</strong><span class="q">Specialista in Radiologia</span></li></ul>
-      <a href="ambulatori/diagnostica-per-immagini-ecografia.html">Vai all'ambulatorio<span class="visually-hidden"> di Diagnostica per immagini - Ecografia</span></a>
-    </article></li><li data-filter-item data-search="ematologia nazario brumana luigi steidl"><article class="spec">
-      <h2><a href="ambulatori/ematologia.html">Ematologia</a></h2>
-      <ul><li><strong>Dott. Nazario Brumana</strong><span class="q">Medico chirurgo · Specialista in Ematologia · Specialista in Medicina Interna</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
-      <a href="ambulatori/ematologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Ematologia</span></a>
-    </article></li><li data-filter-item data-search="endocrinologia fabrizio golonia"><article class="spec">
-      <h2><a href="ambulatori/endocrinologia.html">Endocrinologia</a></h2>
-      <ul><li><strong>Dott. Fabrizio Golonia</strong><span class="q">Medico chirurgo · Specialista in Endocrinologia · Ospedale di Circolo Varese</span></li></ul>
-      <a href="ambulatori/endocrinologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Endocrinologia</span></a>
-    </article></li><li data-filter-item data-search="fisiatria antonio ferrario"><article class="spec">
-      <h2><a href="ambulatori/fisiatria.html">Fisiatria</a></h2>
-      <ul><li><strong>Dott. Antonio Ferrario</strong></li></ul>
-      <a href="ambulatori/fisiatria.html">Vai all'ambulatorio<span class="visually-hidden"> di Fisiatria</span></a>
-    </article></li><li data-filter-item data-search="gastroenterologia claudio camillo cortelezzi"><article class="spec">
-      <h2><a href="ambulatori/gastroenterologia.html">Gastroenterologia</a></h2>
-      <ul><li><strong>Dott. Claudio Camillo Cortelezzi</strong><span class="q">Specialista in Gastroenterologia · Specialista in Medicina Interna · Ospedale di Circolo Varese</span></li></ul>
-      <a href="ambulatori/gastroenterologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Gastroenterologia</span></a>
-    </article></li><li data-filter-item data-search="ginecologia - ostetricia marco rossinotti elena zarini"><article class="spec">
-      <h2><a href="ambulatori/ginecologia-ostetricia.html">Ginecologia - Ostetricia</a></h2>
-      <ul><li><strong>Dott. Marco Rossinotti</strong><span class="q">Medico chirurgo · Specialista in Ostetricia e Ginecologia · Ospedale di Cittiglio</span></li><li><strong>Dott.ssa Elena Zarini</strong></li></ul>
-      <a href="ambulatori/ginecologia-ostetricia.html">Vai all'ambulatorio<span class="visually-hidden"> di Ginecologia - Ostetricia</span></a>
-    </article></li><li data-filter-item data-search="medicina interna nazario brumana luigi steidl"><article class="spec">
-      <h2><a href="ambulatori/medicina-interna.html">Medicina interna</a></h2>
-      <ul><li><strong>Dott. Nazario Brumana</strong><span class="q">Medico chirurgo · Specialista in Medicina Interna · Specialista in Ematologia</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
-      <a href="ambulatori/medicina-interna.html">Vai all'ambulatorio<span class="visually-hidden"> di Medicina interna</span></a>
-    </article></li><li data-filter-item data-search="medicina legale e delle assicurazioni graziano azzimonti"><article class="spec">
-      <h2><a href="ambulatori/medicina-legale-e-delle-assicurazioni.html">Medicina legale e delle assicurazioni</a></h2>
-      <ul><li><strong>Dott. Graziano Azzimonti</strong></li></ul>
-      <a href="ambulatori/medicina-legale-e-delle-assicurazioni.html">Vai all'ambulatorio<span class="visually-hidden"> di Medicina legale e delle assicurazioni</span></a>
-    </article></li><li data-filter-item data-search="neurochirurgia carlo scamoni"><article class="spec">
-      <h2><a href="ambulatori/neurochirurgia.html">Neurochirurgia</a></h2>
-      <ul><li><strong>Prof. Carlo Scamoni</strong></li></ul>
-      <a href="ambulatori/neurochirurgia.html">Vai all'ambulatorio<span class="visually-hidden"> di Neurochirurgia</span></a>
-    </article></li><li data-filter-item data-search="neurologia umberto surace"><article class="spec">
-      <h2><a href="ambulatori/neurologia.html">Neurologia</a></h2>
-      <ul><li><strong>Dott. Umberto Surace</strong></li></ul>
-      <a href="ambulatori/neurologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Neurologia</span></a>
-    </article></li><li data-filter-item data-search="oculistica alessandra cantarelli gerardo gennari simona gori"><article class="spec">
-      <h2><a href="ambulatori/oculistica.html">Oculistica</a></h2>
-      <ul><li><strong>Dott.ssa Alessandra Cantarelli</strong></li><li><strong>Dott. Gerardo Gennari</strong></li><li><strong>Dott.ssa Simona Gori</strong></li></ul>
-      <a href="ambulatori/oculistica.html">Vai all'ambulatorio<span class="visually-hidden"> di Oculistica</span></a>
-    </article></li><li data-filter-item data-search="odontoiatria marco gabriele longheu mauro rivolta ivano sbrana"><article class="spec">
-      <h2><a href="ambulatori/odontoiatria.html">Odontoiatria</a></h2>
-      <ul><li><strong>Dott. Marco Gabriele Longheu</strong></li><li><strong>Dott. Mauro Rivolta</strong></li><li><strong>Dott. Ivano Sbrana</strong></li></ul>
-      <a href="ambulatori/odontoiatria.html">Vai all'ambulatorio<span class="visually-hidden"> di Odontoiatria</span></a>
-    </article></li><li data-filter-item data-search="ortodonzia claudia rovetti"><article class="spec">
-      <h2><a href="ambulatori/ortodonzia.html">Ortodonzia</a></h2>
-      <ul><li><strong>Dott.ssa Claudia Rovetti</strong></li></ul>
-      <a href="ambulatori/ortodonzia.html">Vai all'ambulatorio<span class="visually-hidden"> di Ortodonzia</span></a>
-    </article></li><li data-filter-item data-search="ortopedia sara barbieri giovanni zatti"><article class="spec">
-      <h2><a href="ambulatori/ortopedia.html">Ortopedia</a></h2>
-      <ul><li><strong>Dott.ssa Sara Barbieri</strong><span class="q">Medico chirurgo · Specialista in Ortopedia e Traumatologia · Azienda Ospedaliera S. Antonio Abate - Gallarate</span></li><li><strong>Prof. Giovanni Zatti</strong><span class="q">Medico chirurgo · Specialista in Ortopedia e Traumatologia · Direttore Clinica Ortopedica e Scuola di Specializzazione Università degli Studi Milano - Bicocca · Primario Ortopedia Ospedale San Gerardo Monza</span></li></ul>
-      <a href="ambulatori/ortopedia.html">Vai all'ambulatorio<span class="visually-hidden"> di Ortopedia</span></a>
-    </article></li><li data-filter-item data-search="otorinolaringoiatria gianluca dalfino luca volpi"><article class="spec">
-      <h2><a href="ambulatori/otorinolaringoiatria.html">Otorinolaringoiatria</a></h2>
-      <ul><li><strong>Dott. Gianluca Dalfino</strong></li><li><strong>Dott. Luca Volpi</strong><span class="q">Medico chirurgo · Specialista in Otorinolaringoiatria</span></li></ul>
-      <a href="ambulatori/otorinolaringoiatria.html">Vai all'ambulatorio<span class="visually-hidden"> di Otorinolaringoiatria</span></a>
-    </article></li><li data-filter-item data-search="pneumologia mauro bandera"><article class="spec">
-      <h2><a href="ambulatori/pneumologia.html">Pneumologia</a></h2>
-      <ul><li><strong>Dott. Mauro Bandera</strong></li></ul>
-      <a href="ambulatori/pneumologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Pneumologia</span></a>
-    </article></li><li data-filter-item data-search="psicologia giuliana carrino laura corpaccini"><article class="spec">
-      <h2><a href="ambulatori/psicologia.html">Psicologia</a></h2>
-      <ul><li><strong>Dott.ssa Giuliana Carrino</strong></li><li><strong>Dott.ssa Laura Corpaccini</strong></li></ul>
-      <a href="ambulatori/psicologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Psicologia</span></a>
-    </article></li><li data-filter-item data-search="reumatologia elena baratelli luigi steidl"><article class="spec">
-      <h2><a href="ambulatori/reumatologia.html">Reumatologia</a></h2>
-      <ul><li><strong>Dott.ssa Elena Baratelli</strong><span class="q">Medico chirurgo · Specialista in Reumatologia</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
-      <a href="ambulatori/reumatologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Reumatologia</span></a>
-    </article></li><li data-filter-item data-search="urologia francesco marone giovanni saredi"><article class="spec">
-      <h2><a href="ambulatori/urologia.html">Urologia</a></h2>
-      <ul><li><strong>Dott. Francesco Marone</strong><span class="q">Medico chirurgo · Specialista in Urologia · Specialista in Andrologia</span></li><li><strong>Dott. Giovanni Saredi</strong><span class="q">Medico chirurgo · Specialista in Urologia · Ospedale di Circolo - VARESE</span></li></ul>
-      <a href="ambulatori/urologia.html">Vai all'ambulatorio<span class="visually-hidden"> di Urologia</span></a>
-    </article></li></ul>
+      <ul class="dir" id="lista-medici"><li data-filter-item data-search="andrologia francesco marone">
+      <h2>Andrologia</h2>
+      <div>
+        <ul><li><strong>Dott. Francesco Marone</strong><span class="q">Medico chirurgo · Specialista in Urologia · Specialista in Andrologia</span></li></ul>
+        <a class="textlink" href="ambulatori/andrologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Andrologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="angiologia antonino tarallo">
+      <h2>Angiologia</h2>
+      <div>
+        <ul><li><strong>Dott. Antonino Tarallo</strong></li></ul>
+        <a class="textlink" href="ambulatori/angiologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Angiologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="cardiologia gianmarco dacquino mariangela lattanzio fabrizio morandi stefano provasoli">
+      <h2>Cardiologia</h2>
+      <div>
+        <ul><li><strong>Dott. Gianmarco Dacquino</strong></li><li><strong>Dott.ssa Mariangela Lattanzio</strong><span class="q">Specialista in Cardiologia · Ospedale di Circolo e Fondazione Macchi Varese</span></li><li><strong>Dott. Fabrizio Morandi</strong><span class="q">Specialista in Cardiologia · Specialista in Medicina Nucleare · Ospedale di Circolo e Fond. Macchi Varese</span></li><li><strong>Dott. Stefano Provasoli</strong><span class="q">Specialista in Cardiologia · Ospedale di Circolo e Fond. Macchi Varese</span></li></ul>
+        <a class="textlink" href="ambulatori/cardiologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Cardiologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="chirurgia anna cremona">
+      <h2>Chirurgia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Anna Cremona</strong><span class="q">Specialista in Chirurgia Generale · Ospedale di Circolo - VARESE</span></li></ul>
+        <a class="textlink" href="ambulatori/chirurgia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Chirurgia</span></a>
+      </div>
+    </li><li data-filter-item data-search="dermatologia sandra leuchi">
+      <h2>Dermatologia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Sandra Leuchi</strong><span class="q">Medico chirurgo · Specialista in Dermatologia e Venereologia</span></li></ul>
+        <a class="textlink" href="ambulatori/dermatologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Dermatologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="diagnostica per immagini - ecografia massimo paolucci">
+      <h2>Diagnostica per immagini - Ecografia</h2>
+      <div>
+        <ul><li><strong>Dott. Massimo Paolucci</strong><span class="q">Specialista in Radiologia</span></li></ul>
+        <a class="textlink" href="ambulatori/diagnostica-per-immagini-ecografia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Diagnostica per immagini - Ecografia</span></a>
+      </div>
+    </li><li data-filter-item data-search="ematologia nazario brumana luigi steidl">
+      <h2>Ematologia</h2>
+      <div>
+        <ul><li><strong>Dott. Nazario Brumana</strong><span class="q">Medico chirurgo · Specialista in Ematologia · Specialista in Medicina Interna</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
+        <a class="textlink" href="ambulatori/ematologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Ematologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="endocrinologia fabrizio golonia">
+      <h2>Endocrinologia</h2>
+      <div>
+        <ul><li><strong>Dott. Fabrizio Golonia</strong><span class="q">Medico chirurgo · Specialista in Endocrinologia · Ospedale di Circolo Varese</span></li></ul>
+        <a class="textlink" href="ambulatori/endocrinologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Endocrinologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="fisiatria antonio ferrario">
+      <h2>Fisiatria</h2>
+      <div>
+        <ul><li><strong>Dott. Antonio Ferrario</strong></li></ul>
+        <a class="textlink" href="ambulatori/fisiatria.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Fisiatria</span></a>
+      </div>
+    </li><li data-filter-item data-search="gastroenterologia claudio camillo cortelezzi">
+      <h2>Gastroenterologia</h2>
+      <div>
+        <ul><li><strong>Dott. Claudio Camillo Cortelezzi</strong><span class="q">Specialista in Gastroenterologia · Specialista in Medicina Interna · Ospedale di Circolo Varese</span></li></ul>
+        <a class="textlink" href="ambulatori/gastroenterologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Gastroenterologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="ginecologia - ostetricia marco rossinotti elena zarini">
+      <h2>Ginecologia - Ostetricia</h2>
+      <div>
+        <ul><li><strong>Dott. Marco Rossinotti</strong><span class="q">Medico chirurgo · Specialista in Ostetricia e Ginecologia · Ospedale di Cittiglio</span></li><li><strong>Dott.ssa Elena Zarini</strong></li></ul>
+        <a class="textlink" href="ambulatori/ginecologia-ostetricia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Ginecologia - Ostetricia</span></a>
+      </div>
+    </li><li data-filter-item data-search="medicina interna nazario brumana luigi steidl">
+      <h2>Medicina interna</h2>
+      <div>
+        <ul><li><strong>Dott. Nazario Brumana</strong><span class="q">Medico chirurgo · Specialista in Medicina Interna · Specialista in Ematologia</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
+        <a class="textlink" href="ambulatori/medicina-interna.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Medicina interna</span></a>
+      </div>
+    </li><li data-filter-item data-search="medicina legale e delle assicurazioni graziano azzimonti">
+      <h2>Medicina legale e delle assicurazioni</h2>
+      <div>
+        <ul><li><strong>Dott. Graziano Azzimonti</strong></li></ul>
+        <a class="textlink" href="ambulatori/medicina-legale-e-delle-assicurazioni.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Medicina legale e delle assicurazioni</span></a>
+      </div>
+    </li><li data-filter-item data-search="neurochirurgia carlo scamoni">
+      <h2>Neurochirurgia</h2>
+      <div>
+        <ul><li><strong>Prof. Carlo Scamoni</strong></li></ul>
+        <a class="textlink" href="ambulatori/neurochirurgia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Neurochirurgia</span></a>
+      </div>
+    </li><li data-filter-item data-search="neurologia umberto surace">
+      <h2>Neurologia</h2>
+      <div>
+        <ul><li><strong>Dott. Umberto Surace</strong></li></ul>
+        <a class="textlink" href="ambulatori/neurologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Neurologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="oculistica alessandra cantarelli gerardo gennari simona gori">
+      <h2>Oculistica</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Alessandra Cantarelli</strong></li><li><strong>Dott. Gerardo Gennari</strong></li><li><strong>Dott.ssa Simona Gori</strong></li></ul>
+        <a class="textlink" href="ambulatori/oculistica.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Oculistica</span></a>
+      </div>
+    </li><li data-filter-item data-search="odontoiatria marco gabriele longheu mauro rivolta ivano sbrana">
+      <h2>Odontoiatria</h2>
+      <div>
+        <ul><li><strong>Dott. Marco Gabriele Longheu</strong></li><li><strong>Dott. Mauro Rivolta</strong></li><li><strong>Dott. Ivano Sbrana</strong></li></ul>
+        <a class="textlink" href="ambulatori/odontoiatria.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Odontoiatria</span></a>
+      </div>
+    </li><li data-filter-item data-search="ortodonzia claudia rovetti">
+      <h2>Ortodonzia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Claudia Rovetti</strong></li></ul>
+        <a class="textlink" href="ambulatori/ortodonzia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Ortodonzia</span></a>
+      </div>
+    </li><li data-filter-item data-search="ortopedia sara barbieri giovanni zatti">
+      <h2>Ortopedia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Sara Barbieri</strong><span class="q">Medico chirurgo · Specialista in Ortopedia e Traumatologia · Azienda Ospedaliera S. Antonio Abate - Gallarate</span></li><li><strong>Prof. Giovanni Zatti</strong><span class="q">Medico chirurgo · Specialista in Ortopedia e Traumatologia · Direttore Clinica Ortopedica e Scuola di Specializzazione Università degli Studi Milano - Bicocca · Primario Ortopedia Ospedale San Gerardo Monza</span></li></ul>
+        <a class="textlink" href="ambulatori/ortopedia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Ortopedia</span></a>
+      </div>
+    </li><li data-filter-item data-search="otorinolaringoiatria gianluca dalfino luca volpi">
+      <h2>Otorinolaringoiatria</h2>
+      <div>
+        <ul><li><strong>Dott. Gianluca Dalfino</strong></li><li><strong>Dott. Luca Volpi</strong><span class="q">Medico chirurgo · Specialista in Otorinolaringoiatria</span></li></ul>
+        <a class="textlink" href="ambulatori/otorinolaringoiatria.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Otorinolaringoiatria</span></a>
+      </div>
+    </li><li data-filter-item data-search="pneumologia mauro bandera">
+      <h2>Pneumologia</h2>
+      <div>
+        <ul><li><strong>Dott. Mauro Bandera</strong></li></ul>
+        <a class="textlink" href="ambulatori/pneumologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Pneumologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="psicologia giuliana carrino laura corpaccini">
+      <h2>Psicologia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Giuliana Carrino</strong></li><li><strong>Dott.ssa Laura Corpaccini</strong></li></ul>
+        <a class="textlink" href="ambulatori/psicologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Psicologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="reumatologia elena baratelli luigi steidl">
+      <h2>Reumatologia</h2>
+      <div>
+        <ul><li><strong>Dott.ssa Elena Baratelli</strong><span class="q">Medico chirurgo · Specialista in Reumatologia</span></li><li><strong>Dott. Luigi Steidl</strong><span class="q">Medico chirurgo · Specialista in Reumatologia · Specialista in Ematologia · Specialista in Medicina Interna</span></li></ul>
+        <a class="textlink" href="ambulatori/reumatologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Reumatologia</span></a>
+      </div>
+    </li><li data-filter-item data-search="urologia francesco marone giovanni saredi">
+      <h2>Urologia</h2>
+      <div>
+        <ul><li><strong>Dott. Francesco Marone</strong><span class="q">Medico chirurgo · Specialista in Urologia · Specialista in Andrologia</span></li><li><strong>Dott. Giovanni Saredi</strong><span class="q">Medico chirurgo · Specialista in Urologia · Ospedale di Circolo - VARESE</span></li></ul>
+        <a class="textlink" href="ambulatori/urologia.html">Scheda dell'ambulatorio<span class="visually-hidden"> di Urologia</span></a>
+      </div>
+    </li></ul>
     </div>
   </section>
 </main>

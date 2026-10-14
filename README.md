@@ -65,6 +65,17 @@ Graziano Azzimonti; "MAURO BANDERA" → Mauro Bandera); testo Ozonoterapia: solo
 (`&#39;`, `&nbsp;`, "attiivazione") e spazi di punteggiatura. Nella convenzione Sara la riga "telefonare al numero verde"
 era nel campo sbagliato dell'originale ed è stata spostata in "Modalità operative".
 
+## Direzione di design
+
+- **Il contatto viene prima di tutto:** nell'hero il numero di telefono è il titolo (72 px, sottolineato in rosso). Il rosso è riservato alle azioni di chiamata.
+- **Elenchi a righe** (come un elenco telefonico) al posto delle card; croce del logo solo come marcatore di elenco; nessuna ombra, sfumatura, etichetta in maiuscolo o animazione d'ingresso.
+- **Colori:** petrolio del sito originale e verde salvia ricavato dalle foto reali (vetro del bancone, poltrone).
+- **Font:** Atkinson Hyperlegible (Braille Institute, licenza OFL, in `assets/fonts/`), pensato per la massima leggibilità; lo zero barrato è la sua caratteristica anti-ambiguità. Per cambiarlo modifica i due `@font-face` e `--font` in `assets/css/style.css`.
+
+## Tono dei testi
+
+I testi di interfaccia usano il «Lei» ("Per informazioni contatti la segreteria"). Il pulsante «Chiama 0332 287257» resta con questa dicitura come da specifica; le etichette dei pulsanti sono nominali ("Email alla segreteria", "Mappa su Google Maps"). I testi riportati dall'originale (modalità operative delle convenzioni) sono fedeli, con il solo passaggio dal «tu» al «Lei» in Sanicard e Sara.
+
 ## Note tecniche
 
 - Nessuno script di terze parti, nessun cookie, nessun iframe (la mappa è un link a Google Maps).
