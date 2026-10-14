@@ -25,6 +25,14 @@ const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 const written = [];
 
+/* meta description: massimo 160 caratteri; aggiunge i pezzi opzionali solo se ci stanno */
+function fit(base, ...optional) {
+  let out = base;
+  for (const o of optional) if (o && (out + ' ' + o).length <= 160) out += ' ' + o;
+  if (out.length > 160) out = out.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+  return out;
+}
+
 function write(rel, content) {
   const full = path.join(ROOT, rel);
   fs.mkdirSync(path.dirname(full), { recursive: true });
@@ -151,7 +159,7 @@ function header(root, activeKey, file) {
     const attr = exact ? ' aria-current="page"' : activeKey === n.key ? ' class="is-active"' : '';
     return `<li><a href="${root}${n.href}"${attr}>${esc(n.label)}</a></li>`;
   }).join('');
-  return `<a class="skip-link" href="#contenuto">Vai al contenuto</a>
+  return `<a class="skip-link" href="#contenuto">Al contenuto principale</a>
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="${root}index.html" aria-label="Multi Medica Varese – pagina iniziale">
@@ -201,7 +209,8 @@ function footer(root) {
 <a class="call-bar" href="${telHref}">${icon('phone', 24)}Chiama ${tel}</a>`;
 }
 
-function page({ file, title, description, main, activeKey = '', jsonld = [], comment = '' }) {
+function page({ file, title, description: rawDescription, main, activeKey = '', jsonld = [], comment = '' }) {
+  const description = fit(rawDescription);
   const depth = file.split('/').length - 1;
   const root = '../'.repeat(depth);
   const url = `${site.baseUrl}/${file === 'index.html' ? '' : file}`;
@@ -248,7 +257,7 @@ function contactBlock() {
   return `<ul class="contact-list">
     <li><span class="ico">${icon('phone')}</span><div><strong>Telefono</strong><a href="${telHref}">${tel}</a></div></li>
     <li><span class="ico">${icon('mail')}</span><div><strong>Email</strong><a href="mailto:${site.email}">${site.email}</a></div></li>
-    <li><span class="ico">${icon('pin')}</span><div><strong>Indirizzo</strong><span class="v">${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</span><br><a href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Apri la mappa su Google Maps (si apre in una nuova scheda)">Apri la mappa</a></div></li>
+    <li><span class="ico">${icon('pin')}</span><div><strong>Indirizzo</strong><span class="v">${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</span><br><a href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Mappa su Google Maps (si apre in una nuova scheda)">Mappa su Google Maps</a></div></li>
   </ul>`;
 }
 function hoursBox(h = 'h2') {
@@ -266,7 +275,7 @@ function asideContacts() {
   </aside>`;
 }
 function actionButtons() {
-  return `<div class="btn-row"><a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a><a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Scrivi alla segreteria</a></div>`;
+  return `<div class="btn-row"><a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a><a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Email alla segreteria</a></div>`;
 }
 function filterBox({ id, listId, label, noun, nounOne, total }) {
   return `<div class="filter">
@@ -315,8 +324,8 @@ function homePage() {
         <p class="lead">Poliambulatorio specialistico nel centro di Varese, in Via Piave 9. Società a responsabilità limitata dal 1993, con ${ambulatori.length} ambulatori e servizi di diagnostica.</p>
         <div class="btn-row">
           <a class="btn btn-call" href="${telHref}">${icon('phone', 20)}Chiama ${tel}</a>
-          <a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Scrivi alla segreteria</a>
-          <a class="btn btn-ghost" href="${root}ambulatori/index.html">Vedi gli ambulatori</a>
+          <a class="btn btn-ghost" href="mailto:${site.email}">${icon('mail', 20)}Email alla segreteria</a>
+          <a class="btn btn-ghost" href="${root}ambulatori/index.html">Gli ambulatori</a>
         </div>
       </div>
       <div class="hero-photos">
@@ -330,7 +339,7 @@ function homePage() {
     <div class="wrap">
       <ul class="quick-grid">
         <li><div class="quick-card"><span class="ico">${icon('phone', 26)}</span><div><h2>Telefono</h2><a class="big" href="${telHref}">${tel}</a><p class="muted">Segreteria</p></div></div></li>
-        <li><div class="quick-card"><span class="ico">${icon('mail', 26)}</span><div><h2>Email</h2><a class="big mail" href="mailto:${site.email}">${site.email}</a><p class="muted">Rispondiamo agli indirizzi indicati</p></div></div></li>
+        <li><div class="quick-card"><span class="ico">${icon('mail', 26)}</span><div><h2>Email</h2><a class="big mail" href="mailto:${site.email}">${site.email}</a><p class="muted">Segreteria</p></div></div></li>
         <li><div class="quick-card"><span class="ico">${icon('clock', 26)}</span><div><h2>Orari</h2><span class="big">${esc(site.orari.giorni.charAt(0).toUpperCase() + site.orari.giorni.slice(1))}<br>${esc(site.orari.fascia)}</span><p class="muted">${esc(site.orari.titolo)}</p></div></div></li>
       </ul>
     </div>
@@ -351,7 +360,7 @@ function homePage() {
     <div class="wrap">
       <div class="section-head">
         <h2 id="titolo-ambulatori">I nostri ambulatori</h2>
-        <p>${ambulatori.length} ambulatori specialistici. Scegli la specialità per vedere le prestazioni eseguite e i medici.</p>
+        <p>${ambulatori.length} ambulatori specialistici. Scelga la specialità per consultare le prestazioni eseguite e i medici.</p>
       </div>
       <ul class="cards cols-4">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
       <p style="margin-top:24px"><a class="btn btn-ghost" href="${root}ambulatori/index.html">Tutti gli ambulatori ${icon('arrow', 20)}</a></p>
@@ -364,7 +373,7 @@ function homePage() {
         <h2 id="titolo-diagnostica">Diagnostica</h2>
         <p class="lead">Esami e prestazioni diagnostiche eseguiti in sede, in ${diagnostica.length} aree.</p>
         <ul class="chips">${diagnostica.map((d) => `<li><a class="chip" href="${root}${slugDiag(d)}">${esc(d.nome)}</a></li>`).join('')}</ul>
-        <p style="margin-top:24px"><a class="btn btn-light" href="${root}diagnostica/index.html">Vai alla diagnostica ${icon('arrow', 20)}</a></p>
+        <p style="margin-top:24px"><a class="btn btn-light" href="${root}diagnostica/index.html">Tutta la diagnostica ${icon('arrow', 20)}</a></p>
       </div>
       <div class="duo">${photo('esami', root)}${photo('eco', root)}</div>
     </div>
@@ -374,7 +383,7 @@ function homePage() {
     <div class="wrap">
       <div class="section-head">
         <h2 id="titolo-conv">Convenzioni</h2>
-        <p>${convenzioni.length} convenzioni con fondi sanitari e assicurazioni, in forma diretta o indiretta. Per sapere se la tua è attiva, chiama la segreteria.</p>
+        <p>${convenzioni.length} convenzioni con fondi sanitari e assicurazioni, in forma diretta o indiretta. Per sapere se la Sua è attiva, chiami la segreteria.</p>
       </div>
       <ul class="conv-strip">${featured.map((c) => `<li><a class="conv-tile" href="${root}convenzioni.html#${c.slug}">${c.logo ? logoImg(c, root, c.nome) : esc(c.nome)}</a></li>`).join('')}</ul>
       <a class="btn btn-ghost" href="${root}convenzioni.html">Tutte le convenzioni ${icon('arrow', 20)}</a>
@@ -388,12 +397,12 @@ function homePage() {
         <p>${esc(site.raggiungerci.intro)}</p>
         <ul>${site.raggiungerci.punti.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
         <p><strong>${esc(site.indirizzo.via)}, ${site.indirizzo.cap} ${site.indirizzo.citta}</strong></p>
-        <div class="btn-row"><a class="btn btn-primary" href="${root}dove-siamo.html">Dove siamo</a><a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Calcola il percorso su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Calcola il percorso</a></div>
+        <div class="btn-row"><a class="btn btn-primary" href="${root}dove-siamo.html">Dove siamo</a><a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Percorso su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Percorso su Google Maps</a></div>
       </div>
       <div class="callout">
         <h3>Ozonoterapia</h3>
         <p>Informazioni sulla terapia con ozono, dalla sezione novità del poliambulatorio.</p>
-        <p><a class="btn btn-ghost" href="${root}ozonoterapia.html">Leggi la pagina dedicata</a></p>
+        <p><a class="btn btn-ghost" href="${root}ozonoterapia.html">Pagina dedicata all'ozonoterapia</a></p>
       </div>
     </div>
   </section>
@@ -412,10 +421,10 @@ function ambulatoriIndex() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Poliambulatorio specialistico', h1: 'Ambulatori', lead: `${ambulatori.length} ambulatori specialistici nel centro di Varese. Scegli la specialità per vedere prestazioni e medici; per fissare un appuntamento chiama la segreteria.`, photoKey: 'studio-odontoiatrico', root })}
+  ${pageHero({ eyebrow: 'Poliambulatorio specialistico', h1: 'Ambulatori', lead: `${ambulatori.length} ambulatori specialistici nel centro di Varese. Scelga la specialità per consultare prestazioni e medici; per fissare un appuntamento chiami la segreteria.`, photoKey: 'studio-odontoiatrico', root })}
   <section class="section" aria-label="Elenco degli ambulatori">
     <div class="wrap">
-      ${filterBox({ id: 'q-amb', listId: 'lista-ambulatori', label: 'Cerca un ambulatorio, un medico o una prestazione', noun: 'ambulatori', nounOne: 'ambulatorio', total: ambulatori.length })}
+      ${filterBox({ id: 'q-amb', listId: 'lista-ambulatori', label: 'Ricerca di un ambulatorio, di un medico o di una prestazione', noun: 'ambulatori', nounOne: 'ambulatorio', total: ambulatori.length })}
       <ul class="cards cols-4" id="lista-ambulatori">${ambulatori.map((a) => ambCard(a, root)).join('')}</ul>
     </div>
   </section>
@@ -427,19 +436,19 @@ function ambulatorioPage(a, i) {
   const crumbs = [{ label: 'Home', href: 'index.html' }, { label: 'Ambulatori', href: 'ambulatori/index.html' }, { label: a.nome, href: slugAmb(a) }];
   const prev = ambulatori[(i + ambulatori.length - 1) % ambulatori.length];
   const next = ambulatori[(i + 1) % ambulatori.length];
-  const lead = a.descrizione || `Ambulatorio di ${a.nome} presso Multi Medica Varese. Per informazioni contatta la segreteria.`;
+  const lead = a.descrizione || `Ambulatorio di ${a.nome} presso Multi Medica Varese. Per informazioni contatti la segreteria.`;
   const linkedDiag = a.diagnostiche.map((s) => diagBySlug[s]).filter(Boolean);
   const list = (arr, cols) => `<ul class="checklist${cols ? ' cols' : ''}">${arr.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`;
   let prestHtml;
   if (a.prestazioni_gruppi && a.prestazioni_gruppi.length) prestHtml = a.prestazioni_gruppi.map((g) => list(g, true)).join('');
   else if (a.prestazioni.length) prestHtml = list(a.prestazioni, a.prestazioni.length > 6);
-  else prestHtml = `<p class="empty">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>`;
+  else prestHtml = `<p class="empty">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>`;
   const docs = a.medici.map((m) => `<li class="doc"><h3>${esc(docName(m))}</h3>${m.qualifiche.length ? `<ul class="quals">${m.qualifiche.map((q) => `<li>${esc(q)}</li>`).join('')}</ul>` : ''}${m.prestazioni.length ? `<details><summary>Prestazioni del medico</summary><ul>${m.prestazioni.map((p) => `<li>${esc(p)}</li>`).join('')}</ul></details>` : ''}</li>`).join('');
   const names = a.medici.map((m) => m.nome).join(', ');
   return page({
     file: slugAmb(a),
     title: `${a.nome} a Varese | Multi Medica Varese`,
-    description: `Ambulatorio di ${a.nome} a Varese presso Multi Medica Varese, Via Piave 9${names ? `. Medici: ${names}` : ''}. Appuntamenti: ${tel}.`.slice(0, 300),
+    description: fit(`Ambulatorio di ${a.nome} a Varese, presso Multi Medica Varese in Via Piave 9.`, `Appuntamenti: ${tel}.`, names ? `Medici: ${names}.` : ''),
     activeKey: 'ambulatori',
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
@@ -472,7 +481,7 @@ function diagnosticaIndex() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Esami e prestazioni', h1: 'Diagnostica', lead: `${diagnostica.length} aree di diagnostica. Scegli l'area per vedere gli esami eseguiti; per un appuntamento chiama la segreteria.`, photoKey: 'studio-ecografia', root })}
+  ${pageHero({ eyebrow: 'Esami e prestazioni', h1: 'Diagnostica', lead: `${diagnostica.length} aree di diagnostica. Scelga l'area per consultare gli esami eseguiti; per un appuntamento chiami la segreteria.`, photoKey: 'studio-ecografia', root })}
   <section class="section" aria-label="Elenco della diagnostica">
     <div class="wrap">
       <ul class="cards" id="lista-diagnostica">${diagnostica.map((d) => diagCard(d, root)).join('')}</ul>
@@ -489,16 +498,16 @@ function diagnosticaPage(d, i) {
   const linked = d.ambulatori.map((s) => ambBySlug[s]).filter(Boolean);
   const exams = d.esami.length
     ? `<ul class="exam-list">${d.esami.map((e) => `<li><strong>${esc(e.nome)}</strong>${e.descrizione ? `<span>${esc(e.descrizione)}</span>` : ''}</li>`).join('')}</ul>`
-    : `<p class="empty">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a></p>`;
+    : `<p class="empty">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a></p>`;
   return page({
     file: slugDiag(d),
     title: `Diagnostica: ${d.nome} a Varese | Multi Medica Varese`,
-    description: `Diagnostica ${d.nome} a Varese presso Multi Medica Varese, Via Piave 9: ${d.esami.slice(0, 3).map((e) => e.nome).join(', ')}. Appuntamenti: ${tel}.`.slice(0, 300),
+    description: fit(`Diagnostica ${d.nome} a Varese, presso Multi Medica Varese in Via Piave 9.`, `Appuntamenti: ${tel}.`, d.esami.length ? `Esami: ${d.esami.map((x) => x.nome).join(', ')}.` : ''),
     activeKey: 'diagnostica',
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Diagnostica', h1: d.nome, lead: `Esami eseguiti in sede. Per informazioni e appuntamenti contatta la segreteria.`, photoKey: d.foto, root })}
+  ${pageHero({ eyebrow: 'Diagnostica', h1: d.nome, lead: `Esami eseguiti in sede. Per informazioni e appuntamenti contatti la segreteria.`, photoKey: d.foto, root })}
   <div class="wrap layout">
     <div>
       <section class="panel" aria-labelledby="esami"><h2 id="esami">Esami eseguiti</h2>${exams}</section>
@@ -521,9 +530,9 @@ function mediciPage() {
   const items = medici.map((s) => {
     const search = norm([s.specialita, ...s.medici.map((m) => m.nome)].join(' '));
     return `<li data-filter-item data-search="${esc(search)}"><article class="spec">
-      <h2><a href="${'%ROOT%'}ambulatori/${s.ambulatorio}.html">${esc(s.specialita)}</a></h2>
+      <h2>${esc(s.specialita)}</h2>
       <ul>${s.medici.map((m) => `<li><strong>${esc(docName(m))}</strong>${m.qualifiche.length ? `<span class="q">${esc(m.qualifiche.join(' · '))}</span>` : ''}</li>`).join('')}</ul>
-      <a href="${'%ROOT%'}ambulatori/${s.ambulatorio}.html">Vai all'ambulatorio<span class="visually-hidden"> di ${esc(s.specialita)}</span></a>
+      <a href="${'%ROOT%'}ambulatori/${s.ambulatorio}.html">Scheda dell'ambulatorio<span class="visually-hidden"> di ${esc(s.specialita)}</span></a>
     </article></li>`;
   });
   return page({
@@ -534,10 +543,10 @@ function mediciPage() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Il nostro team', h1: 'Medici specialisti', lead: `Elenco dei medici per specialità (${unique} professionisti, alcuni presenti in più ambulatori). Seleziona la specialità per vedere prestazioni e contatti.`, root })}
+  ${pageHero({ eyebrow: 'Il nostro team', h1: 'Medici specialisti', lead: `Elenco dei medici per specialità (${unique} professionisti, alcuni presenti in più ambulatori). Selezioni la specialità per consultare prestazioni e contatti.`, root })}
   <section class="section" aria-label="Elenco dei medici per specialità">
     <div class="wrap">
-      ${filterBox({ id: 'q-med', listId: 'lista-medici', label: 'Cerca un medico o una specialità', noun: 'specialità', nounOne: 'specialità', total: medici.length })}
+      ${filterBox({ id: 'q-med', listId: 'lista-medici', label: 'Ricerca di un medico o di una specialità', noun: 'specialità', nounOne: 'specialità', total: medici.length })}
       <ul class="spec-grid" id="lista-medici">${items.join('').split('%ROOT%').join(root)}</ul>
     </div>
   </section>
@@ -558,7 +567,7 @@ function convenzioniPage() {
     const details = `<details class="more"><summary>Come fare?</summary>
         ${c.aventi_diritto.length ? `<h3>Hanno diritto alla convenzione</h3>${c.aventi_diritto.map((p) => `<p>${linkify(p)}</p>`).join('')}` : ''}
         ${c.modalita.length ? `<h3>Modalità operative</h3>${c.modalita.map((p) => `<p>${linkify(p)}</p>`).join('')}` : ''}
-        ${hasDetails ? '' : `<p>Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a>.</p>`}
+        ${hasDetails ? '' : `<p>Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a>.</p>`}
       </details>`;
     return `<li data-filter-item data-search="${esc(search)}"><article class="conv-card" id="${c.slug}">
       <div class="conv-logo">${logo}</div>
@@ -577,10 +586,10 @@ function convenzioniPage() {
     jsonld: [breadcrumbJsonLd(crumbs)],
     main: (root) => `${breadcrumbHtml(crumbs, root)}
 <main id="contenuto" tabindex="-1">
-  ${pageHero({ eyebrow: 'Fondi sanitari e assicurazioni', h1: 'Convenzioni', lead: `${convenzioni.length} convenzioni attive, in forma diretta o indiretta. Per i dettagli e per verificare la tua copertura contatta la segreteria.`, root })}
+  ${pageHero({ eyebrow: 'Fondi sanitari e assicurazioni', h1: 'Convenzioni', lead: `${convenzioni.length} convenzioni, in forma diretta o indiretta. Per i dettagli e per verificare la Sua copertura contatti la segreteria.`, root })}
   <section class="section" aria-label="Elenco delle convenzioni">
     <div class="wrap">
-      ${filterBox({ id: 'q-conv', listId: 'lista-convenzioni', label: 'Cerca una convenzione (nome o tipo)', noun: 'convenzioni', nounOne: 'convenzione', total: convenzioni.length })}
+      ${filterBox({ id: 'q-conv', listId: 'lista-convenzioni', label: 'Ricerca di una convenzione per nome o tipo', noun: 'convenzioni', nounOne: 'convenzione', total: convenzioni.length })}
       <ul class="conv-list" id="lista-convenzioni">${cards.join('').split('%ROOT%').join(root)}</ul>
     </div>
   </section>
@@ -605,7 +614,7 @@ function ozonoPage() {
     <article class="panel prose">
       ${o.paragrafi.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
       <ul>${o.elenco.map((l) => `<li>${esc(l)}</li>`).join('')}</ul>
-      <p class="notice">Per informazioni contatta la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>
+      <p class="notice">Per informazioni contatti la segreteria: <a href="${telHref}">${tel}</a> · <a href="mailto:${site.email}">${site.email}</a></p>
     </article>
     ${asideContacts()}
   </div>
@@ -642,8 +651,8 @@ function doveSiamoPage() {
           <p>${esc(site.raggiungerci.intro)}</p>
           <ul>${site.raggiungerci.punti.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>
           <div class="btn-row">
-            <a class="btn btn-primary" href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Apri la mappa su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Apri la mappa</a>
-            <a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Calcola il percorso su Google Maps (si apre in una nuova scheda)">Calcola il percorso</a>
+            <a class="btn btn-primary" href="${esc(site.mapsUrl)}" target="_blank" rel="noopener" aria-label="Mappa su Google Maps (si apre in una nuova scheda)">${icon('pin', 20)}Mappa su Google Maps</a>
+            <a class="btn btn-ghost" href="${esc(site.mapsRouteUrl)}" target="_blank" rel="noopener" aria-label="Percorso su Google Maps (si apre in una nuova scheda)">Percorso su Google Maps</a>
           </div>
         </section>
         <div style="margin-top:20px">${hoursBox('h2')}</div>
@@ -675,7 +684,7 @@ function privacyPage() {
       <h2>Dati di navigazione</h2>
       <p>Come ogni sito web, il server che ospita le pagine può registrare nei propri log tecnici alcune informazioni necessarie al funzionamento e alla sicurezza del servizio (ad esempio indirizzo IP, data e ora, pagina richiesta). Il titolare non utilizza queste informazioni per identificare i visitatori.</p>
       <h2>Contatti tramite telefono ed email</h2>
-      <p>I collegamenti «Chiama» e «Scrivi» aprono l'applicazione telefonica o il programma di posta del dispositivo dell'utente. I dati che l'utente sceglie di comunicare (ad esempio nome, recapito, richiesta) sono trattati dal titolare solo per rispondere alla richiesta o fissare un appuntamento, e conservati per il tempo necessario a tale finalità.</p>
+      <p>I collegamenti «Chiama» ed «Email» aprono l'applicazione telefonica o il programma di posta del dispositivo dell'utente. I dati che l'utente sceglie di comunicare (ad esempio nome, recapito, richiesta) sono trattati dal titolare solo per rispondere alla richiesta o fissare un appuntamento, e conservati per il tempo necessario a tale finalità.</p>
       <h2>Collegamenti a siti esterni</h2>
       <p>Il sito contiene collegamenti a siti di terzi (ad esempio Google Maps e i siti dei fondi sanitari e delle assicurazioni convenzionate). Questi siti hanno proprie informative sulla privacy e propri cookie, sui quali il titolare non ha controllo.</p>
       <h2>Diritti dell'interessato</h2>

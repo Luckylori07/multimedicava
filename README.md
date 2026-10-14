@@ -65,6 +65,10 @@ Graziano Azzimonti; "MAURO BANDERA" → Mauro Bandera); testo Ozonoterapia: solo
 (`&#39;`, `&nbsp;`, "attiivazione") e spazi di punteggiatura. Nella convenzione Sara la riga "telefonare al numero verde"
 era nel campo sbagliato dell'originale ed è stata spostata in "Modalità operative".
 
+## Tono dei testi
+
+I testi di interfaccia usano il «Lei» ("Per informazioni contatti la segreteria"). Il pulsante «Chiama 0332 287257» resta con questa dicitura come da specifica; le etichette dei pulsanti sono nominali ("Email alla segreteria", "Mappa su Google Maps"). I testi riportati dall'originale (modalità operative delle convenzioni) sono fedeli, con il solo passaggio dal «tu» al «Lei» in Sanicard e Sara.
+
 ## Note tecniche
 
 - Nessuno script di terze parti, nessun cookie, nessun iframe (la mappa è un link a Google Maps).

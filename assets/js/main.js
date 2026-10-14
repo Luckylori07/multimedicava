@@ -46,7 +46,7 @@
         });
         if (status) {
           if (!terms.length) status.textContent = items.length + ' ' + noun;
-          else if (shown === 0) status.textContent = 'Nessun risultato. Prova con un altro termine o chiama la segreteria.';
+          else if (shown === 0) status.textContent = 'Nessun risultato. Provi con un altro termine o chiami la segreteria.';
           else status.textContent = shown + (shown === 1 ? ' risultato' : ' risultati') + ' su ' + items.length;
         }
       };
